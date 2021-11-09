@@ -11,3 +11,7 @@
 • CSS3
 
 # dates : du 8 Novembre 2021 au 22 Novembre 2021 
+
+# Ressources 
+## Notions d'Observables 
+https://book.angular.fr/services-et-http/observable
