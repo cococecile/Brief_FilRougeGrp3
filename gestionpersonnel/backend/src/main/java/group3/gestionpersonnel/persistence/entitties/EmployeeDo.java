@@ -33,20 +33,17 @@ public class EmployeeDo {
 	private String employeePosition;
 
 		@ManyToOne(fetch = FetchType.LAZY, optional = false)
-		@Column(name="fk_employee_managed_by")
-	    @JoinColumn(name = "manager_id", nullable = false)
+		@JoinColumn(name="fk_employee_managed_by", nullable = false)
 		@JsonIgnore
 		private ManagerDo employeeManagedBy;
 		
 		@OneToOne( cascade = CascadeType.PERSIST )
-		@Column(name="fk_mission_id")
-	    @JoinColumn( name="mission_id" )
+		@JoinColumn(name="fk_mission_id")
 		@JsonManagedReference
 		private MissionDo employeeMission;
 		
 		@ManyToOne(fetch = FetchType.LAZY, optional = false)
-		@Column(name="fk_employee_department")
-	    @JoinColumn(name = "department_id", nullable = false)
+		@JoinColumn(name="fk_employee_department", nullable = false)
 		private DepartmentDo employeeDepartment;
 		
 		
