@@ -24,8 +24,7 @@ public class ManagerDo {
 	private String managerEmail;
 	
 	@OneToOne( cascade = CascadeType.PERSIST )
-	@Column(name="fk_manager_department")
-    @JoinColumn( name="department_id")
+	@JoinColumn(name="fk_manager_department")
 	private DepartmentDo managerDepartment;
 	
 	
