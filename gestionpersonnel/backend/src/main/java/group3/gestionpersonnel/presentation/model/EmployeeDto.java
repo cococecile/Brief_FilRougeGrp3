@@ -10,7 +10,10 @@ public class EmployeeDto {
 	private String employeePosition;
 	private ManagerDto employeeManagedBy;
 	private MissionDto employeeMission;
+<<<<<<< HEAD
 	private EmployeeDto employeeDepartment;
+=======
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	
 	
 	public EmployeeDto() {
@@ -21,6 +24,7 @@ public class EmployeeDto {
 		super();
 		this.employeeId = employeeId;
 	}
+<<<<<<< HEAD
 
 	public EmployeeDto(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
 			String employeePosition, ManagerDto employeeManagedBy, MissionDto employeeMission,
@@ -99,5 +103,9 @@ public class EmployeeDto {
 	public void setEmployeeDepartment(EmployeeDto employeeDepartment) {
 		this.employeeDepartment = employeeDepartment;
 	}
+=======
+	
+	
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 
 }

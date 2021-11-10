@@ -1,4 +1,5 @@
 /**
+<<<<<<< HEAD
  * Package Persistence/Entities.
  */
 package group3.gestionpersonnel.persistence.entitties;
@@ -199,5 +200,16 @@ public class MissionDo {
 	
 	
 	
+=======
+ * 
+ */
+package group3.gestionpersonnel.persistence.entitties;
+
+/**
+ * @author Apprenant
+ *
+ */
+public class MissionDo {
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 
 }

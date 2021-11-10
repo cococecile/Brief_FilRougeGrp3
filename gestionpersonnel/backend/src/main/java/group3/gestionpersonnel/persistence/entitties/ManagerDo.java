@@ -2,6 +2,7 @@ package group3.gestionpersonnel.persistence.entitties;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.persistence.*;
 
 @Entity
@@ -29,6 +30,15 @@ public class ManagerDo {
 	
 	
 	@OneToMany( targetEntity=EmployeeDo.class, mappedBy="employeeManagedBy" )
+=======
+public class ManagerDo {
+	
+	private Long managerId;
+	private String managerFirstName;
+	private String managerLastName;
+	private String managerEmail;
+	private DepartmentDo managerDepartment;
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	private List<EmployeeDo> managedEmployees;
 	
 	
