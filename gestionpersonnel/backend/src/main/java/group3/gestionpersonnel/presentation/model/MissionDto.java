@@ -8,12 +8,19 @@ import group3.gestionpersonnel.presentation.model.EmployeeDto;
 
 /**
  * This class represents a Mission Data Transfert object.
+<<<<<<< HEAD
  * 
+=======
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
  * @See group3.gestionpersonnel.persistence.entitties.MissionDo
  * @author Caroline (Group3)
  */
 public class MissionDto {
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	private Long missionId;
 	private String missionName;
 	private Date missionStartDate;
@@ -21,6 +28,7 @@ public class MissionDto {
 	private String missionDescription;
 	private String missionType;
 	private EmployeeDto missionAssignedTo;
+<<<<<<< HEAD
 	private DepartmentDto missionIssuedBy;
 
 	/**
@@ -37,6 +45,21 @@ public class MissionDto {
 	 */
 	public MissionDto(Long missionId) {
 		this.setMissionId(missionId);
+=======
+	
+	/**
+	 * Default constructor
+	 */
+	public MissionDto() {}
+	
+	/**
+	 * Constructor with ID of the object included.
+	 * Rather use this constructor than setter if ID provision is required.
+	 * @param missionId the ID of the Mission object.
+	 */
+	public MissionDto(Long missionId) {
+		this.missionId = missionId;
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	}
 
 	/**
@@ -89,6 +112,7 @@ public class MissionDto {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @return the missionIssuedBy
 	 */
 	public final DepartmentDto getMissionIssuedBy() {
@@ -98,6 +122,10 @@ public class MissionDto {
 	/**
 	 * @param missionId the missionId to set Rather use the constructor with ID
 	 *                  param if possible.
+=======
+	 * @param missionId the missionId to set
+	 * Rather use the constructor with ID param if possible.
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	 */
 	public final void setMissionId(final Long missionId) {
 		this.missionId = missionId;
@@ -145,11 +173,19 @@ public class MissionDto {
 		this.missionAssignedTo = missionAssignedTo;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * @param missionIssuedBy the missionIssuedBy to set
 	 */
 	public final void setMissionIssuedBy(final DepartmentDto missionIssuedBy) {
 		this.missionIssuedBy = missionIssuedBy;
 	}
+=======
+		
+	
+	
+	
+	
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 
 }

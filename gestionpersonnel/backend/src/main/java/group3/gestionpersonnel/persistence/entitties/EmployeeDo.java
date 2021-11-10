@@ -1,14 +1,20 @@
 package group3.gestionpersonnel.persistence.entitties;
 
+<<<<<<< HEAD
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+=======
+import javax.persistence.Entity;
+import javax.persistence.Table;
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 
 @Entity 
 @Table(name= "employee")
 public class EmployeeDo {
 		
+<<<<<<< HEAD
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column(name="employee_id")
@@ -46,6 +52,20 @@ public class EmployeeDo {
 		
 		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
 				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission, DepartmentDo employeeDepartment) {
+=======
+		
+		private Long employeeId;
+		private String employeeFirstName;
+		private String employeeLastName;
+		private String employeeMail;
+		private String employeePosition;
+		private ManagerDo employeeManagedBy;
+		private MissionDo employeeMission;
+		
+		
+		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
+				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission) {
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 			super();
 			this.employeeId = employeeId;
 			this.employeeFirstName = employeeFirstName;
@@ -54,7 +74,10 @@ public class EmployeeDo {
 			this.employeePosition = employeePosition;
 			this.employeeManagedBy = employeeManagedBy;
 			this.employeeMission = employeeMission;
+<<<<<<< HEAD
 			this.employeeDepartment = employeeDepartment;
+=======
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 		}
 
 
@@ -127,6 +150,7 @@ public class EmployeeDo {
 			this.employeeMission = employeeMission;
 		}
 
+<<<<<<< HEAD
 
 		public DepartmentDo getEmployeeDepartment() {
 			return employeeDepartment;
@@ -137,4 +161,6 @@ public class EmployeeDo {
 			this.employeeDepartment = employeeDepartment;
 		}
 
+=======
+>>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 }
