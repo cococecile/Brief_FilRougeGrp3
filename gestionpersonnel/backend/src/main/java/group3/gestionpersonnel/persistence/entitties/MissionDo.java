@@ -24,6 +24,7 @@ public class MissionDo {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="mission_id")
 	private Long missionId;
 	
 	@Column(name="mission_name")
@@ -178,6 +179,21 @@ public class MissionDo {
 	public final void setMissionIssuedBy(final DepartmentDo missionIssuedBy) {
 		this.missionIssuedBy = missionIssuedBy;
 	}
+
+	
+	
+	@Override
+	public String toString() {
+		return "MissionDo [" + (missionId != null ? "missionId=" + missionId + ", " : "")
+				+ (missionName != null ? "missionName=" + missionName + ", " : "")
+				+ (missionStartDate != null ? "missionStartDate=" + missionStartDate + ", " : "")
+				+ (missionEndDate != null ? "missionEndDate=" + missionEndDate + ", " : "")
+				+ (missionDescription != null ? "missionDescription=" + missionDescription + ", " : "")
+				+ (missionType != null ? "missionType=" + missionType + ", " : "")
+				+ (missionAssignedTo != null ? "missionAssignedTo=" + missionAssignedTo + ", " : "")
+				+ (missionIssuedBy != null ? "missionIssuedBy=" + missionIssuedBy : "") + "]";
+	}
+	
 	
 	
 	
