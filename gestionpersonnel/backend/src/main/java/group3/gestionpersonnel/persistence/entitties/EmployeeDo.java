@@ -3,6 +3,7 @@ package group3.gestionpersonnel.persistence.entitties;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity 
 @Table(name= "employee")
@@ -34,6 +35,7 @@ public class EmployeeDo {
 		@OneToOne( cascade = CascadeType.PERSIST )
 		@Column(name="fk_mission_id")
 	    @JoinColumn( name="mission_id" )
+		@JsonManagedReference
 		private MissionDo employeeMission;
 		
 		

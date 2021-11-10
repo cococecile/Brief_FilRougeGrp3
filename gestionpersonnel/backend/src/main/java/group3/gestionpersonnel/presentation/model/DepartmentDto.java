@@ -27,8 +27,7 @@ public class DepartmentDto {
 	 * @param departmentId the ID of the Department object.
 	 */
 	public DepartmentDto(final Long departmentId) {
-		super();
-		this.departmentId = departmentId;
+		this.setDepartmentId(departmentId);
 	}
 
 	/**

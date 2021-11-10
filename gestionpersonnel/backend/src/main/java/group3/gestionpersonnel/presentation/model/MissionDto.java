@@ -8,11 +8,12 @@ import group3.gestionpersonnel.presentation.model.EmployeeDto;
 
 /**
  * This class represents a Mission Data Transfert object.
+ * 
  * @See group3.gestionpersonnel.persistence.entitties.MissionDo
  * @author Caroline (Group3)
  */
 public class MissionDto {
-	
+
 	private Long missionId;
 	private String missionName;
 	private Date missionStartDate;
@@ -21,22 +22,21 @@ public class MissionDto {
 	private String missionType;
 	private EmployeeDto missionAssignedTo;
 	private DepartmentDto missionIssuedBy;
-	
-	
+
 	/**
 	 * Default constructor
 	 */
-	public MissionDto() {}
-	
-	
-		
+	public MissionDto() {
+	}
+
 	/**
-	 * Constructor with ID of the object included.
-	 * Rather use this constructor than setter if ID provision is required.
+	 * Constructor with ID of the object included. Rather use this constructor than
+	 * setter if ID provision is required.
+	 * 
 	 * @param missionId the ID of the Mission object.
 	 */
 	public MissionDto(Long missionId) {
-		this.missionId = missionId;
+		this.setMissionId(missionId);
 	}
 
 	/**
@@ -94,12 +94,10 @@ public class MissionDto {
 	public final DepartmentDto getMissionIssuedBy() {
 		return missionIssuedBy;
 	}
-	
-	
-	
+
 	/**
-	 * @param missionId the missionId to set
-	 * Rather use the constructor with ID param if possible.
+	 * @param missionId the missionId to set Rather use the constructor with ID
+	 *                  param if possible.
 	 */
 	public final void setMissionId(final Long missionId) {
 		this.missionId = missionId;
@@ -153,10 +151,5 @@ public class MissionDto {
 	public final void setMissionIssuedBy(final DepartmentDto missionIssuedBy) {
 		this.missionIssuedBy = missionIssuedBy;
 	}
-		
-	
-	
-	
-	
 
 }
