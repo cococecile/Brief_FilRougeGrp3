@@ -38,9 +38,14 @@ public class EmployeeDo {
 		@JsonManagedReference
 		private MissionDo employeeMission;
 		
+		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@Column(name="fk_employee_department")
+	    @JoinColumn(name = "department_id", nullable = false)
+		private DepartmentDo employeeDepartment;
+		
 		
 		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
-				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission) {
+				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission, DepartmentDo employeeDepartment) {
 			super();
 			this.employeeId = employeeId;
 			this.employeeFirstName = employeeFirstName;
@@ -49,6 +54,7 @@ public class EmployeeDo {
 			this.employeePosition = employeePosition;
 			this.employeeManagedBy = employeeManagedBy;
 			this.employeeMission = employeeMission;
+			this.employeeDepartment = employeeDepartment;
 		}
 
 
@@ -119,6 +125,16 @@ public class EmployeeDo {
 
 		public void setEmployeeMission(MissionDo employeeMission) {
 			this.employeeMission = employeeMission;
+		}
+
+
+		public DepartmentDo getEmployeeDepartment() {
+			return employeeDepartment;
+		}
+
+
+		public void setEmployeeDepartment(DepartmentDo employeeDepartment) {
+			this.employeeDepartment = employeeDepartment;
 		}
 
 }
