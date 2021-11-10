@@ -2,9 +2,6 @@ package group3.gestionpersonnel.persistence.entitties;
 
 import javax.persistence.*;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity 
@@ -13,22 +10,30 @@ public class EmployeeDo {
 		
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="employee_id")
 	private Long employeeId;
 	
+	@Column(name="employee_firstname")
+	private String employeeFirstName;
 	
-		private String employeeFirstName;
-		private String employeeLastName;
-		private String employeeMail;
-		private String employeePosition;
+	@Column(name="employee_lastname")
+	private String employeeLastName;
+	
+	@Column(name="employee_mail")
+	private String employeeMail;
+	
+	@Column(name="employee_position")
+	private String employeePosition;
 
 		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@Column(name="fk_employee_managed_by")
 	    @JoinColumn(name = "manager_id", nullable = false)
-	    @OnDelete(action = OnDeleteAction.CASCADE)
 		@JsonIgnore
 		private ManagerDo employeeManagedBy;
 		
-		@OneToOne( cascade = CascadeType.PERSIST ) 
-	    @JoinColumn( name="fk_mission_id" )
+		@OneToOne( cascade = CascadeType.PERSIST )
+		@Column(name="fk_mission_id")
+	    @JoinColumn( name="mission_id" )
 		private MissionDo employeeMission;
 		
 		
