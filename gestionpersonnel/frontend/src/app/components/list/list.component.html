@@ -1,1 +1,10 @@
-<p>tutorials-list works!</p>
+
+<ion-header>
+    <ion-searchbar (ionInput)="getItems($event)" [debounce]="500" placeholder="Suchen..."></ion-searchbar>
+  </ion-header>
+  
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      <h1>{{item.employeeFirstName}}</h1>
+    </ion-item>
+  </ion-list>
