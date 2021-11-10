@@ -1,6 +1,12 @@
 package group3.gestionpersonnel.persistence.entitties;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity 
+@Table(name= "employee")
 public class EmployeeDo {
+		
 		
 		private Long employeeId;
 		private String employeeFirstName;
@@ -8,11 +14,11 @@ public class EmployeeDo {
 		private String employeeMail;
 		private String employeePosition;
 		private ManagerDo employeeManagedBy;
-		private Mission employeeMission;
+		private MissionDo employeeMission;
 		
 		
 		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
-				String employeePosition, ManagerDo employeeManagedBy, Mission employeeMission) {
+				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission) {
 			super();
 			this.employeeId = employeeId;
 			this.employeeFirstName = employeeFirstName;
@@ -84,12 +90,12 @@ public class EmployeeDo {
 		}
 
 
-		public Mission getEmployeeMission() {
+		public MissionDo getEmployeeMission() {
 			return employeeMission;
 		}
 
 
-		public void setEmployeeMission(Mission employeeMission) {
+		public void setEmployeeMission(MissionDo employeeMission) {
 			this.employeeMission = employeeMission;
 		}
 

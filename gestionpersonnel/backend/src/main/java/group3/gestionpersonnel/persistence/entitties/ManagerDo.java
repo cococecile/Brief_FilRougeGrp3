@@ -8,12 +8,12 @@ public class ManagerDo {
 	private String managerFirstName;
 	private String managerLastName;
 	private String managerEmail;
-	private Department managerDepartment;
+	private DepartmentDo managerDepartment;
 	private List<EmployeeDo> managedEmployees;
 	
 	
 	public ManagerDo(Long managerId, String managerFirstName, String managerLastName, String managerEmail,
-			Department managerDepartment, List<EmployeeDo> managedEmployees) {
+			DepartmentDo managerDepartment, List<EmployeeDo> managedEmployees) {
 		super();
 		this.managerId = managerId;
 		this.managerFirstName = managerFirstName;
@@ -64,12 +64,12 @@ public class ManagerDo {
 	}
 
 
-	public Department getManagerDepartment() {
+	public DepartmentDo getManagerDepartment() {
 		return managerDepartment;
 	}
 
 
-	public void setManagerDepartment(Department managerDepartment) {
+	public void setManagerDepartment(DepartmentDo managerDepartment) {
 		this.managerDepartment = managerDepartment;
 	}
 
