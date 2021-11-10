@@ -20,12 +20,16 @@ public class MissionDto {
 	private String missionDescription;
 	private String missionType;
 	private EmployeeDto missionAssignedTo;
+	private DepartmentDto missionIssuedBy;
+	
 	
 	/**
 	 * Default constructor
 	 */
 	public MissionDto() {}
 	
+	
+		
 	/**
 	 * Constructor with ID of the object included.
 	 * Rather use this constructor than setter if ID provision is required.
@@ -85,6 +89,15 @@ public class MissionDto {
 	}
 
 	/**
+	 * @return the missionIssuedBy
+	 */
+	public final DepartmentDto getMissionIssuedBy() {
+		return missionIssuedBy;
+	}
+	
+	
+	
+	/**
 	 * @param missionId the missionId to set
 	 * Rather use the constructor with ID param if possible.
 	 */
@@ -134,6 +147,12 @@ public class MissionDto {
 		this.missionAssignedTo = missionAssignedTo;
 	}
 
+	/**
+	 * @param missionIssuedBy the missionIssuedBy to set
+	 */
+	public final void setMissionIssuedBy(final DepartmentDto missionIssuedBy) {
+		this.missionIssuedBy = missionIssuedBy;
+	}
 		
 	
 	
