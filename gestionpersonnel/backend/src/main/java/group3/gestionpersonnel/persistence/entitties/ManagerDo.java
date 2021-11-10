@@ -30,6 +30,7 @@ public class ManagerDo {
 	@OneToMany( targetEntity=EmployeeDo.class, mappedBy="employeeManagedBy" )
 	private List<EmployeeDo> managedEmployees;
 	
+	public ManagerDo(){}
 	
 	public ManagerDo(Long managerId, String managerFirstName, String managerLastName, String managerEmail,
 			DepartmentDo managerDepartment, List<EmployeeDo> managedEmployees) {
