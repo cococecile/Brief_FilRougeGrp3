@@ -27,12 +27,7 @@ public class DepartmentDto {
 	 * @param departmentId the ID of the Department object.
 	 */
 	public DepartmentDto(final Long departmentId) {
-<<<<<<< HEAD
 		this.setDepartmentId(departmentId);
-=======
-		super();
-		this.departmentId = departmentId;
->>>>>>> parent of c43f06a... Merge pull request #7 from cococecile/revert-5-feat-Justine
 	}
 
 	/**
