@@ -4,7 +4,6 @@
 package group3.gestionpersonnel.presentation.model;
 
 import java.util.Date;
-import group3.gestionpersonnel.presentation.model.EmployeeDto;
 
 /**
  * This class represents a Mission Data Transfert object.
@@ -13,7 +12,6 @@ import group3.gestionpersonnel.presentation.model.EmployeeDto;
  * @author Caroline (Group3)
  */
 public class MissionDto {
-
 	private Long missionId;
 	private String missionName;
 	private Date missionStartDate;
