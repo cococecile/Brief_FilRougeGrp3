@@ -2,13 +2,26 @@ package group3.gestionpersonnel.persistence.entitties;
 
 import java.util.List;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="manager")
 public class ManagerDo {
 	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long managerId;
+	
 	private String managerFirstName;
 	private String managerLastName;
 	private String managerEmail;
+	
+	@OneToOne( cascade = CascadeType.PERSIST ) 
+    @JoinColumn( name="fk_manager_department" )
 	private DepartmentDo managerDepartment;
+	
+	
+	@OneToMany( targetEntity=EmployeeDo.class, mappedBy="employeeManagedBy" )
 	private List<EmployeeDo> managedEmployees;
 	
 	

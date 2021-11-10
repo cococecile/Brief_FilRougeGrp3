@@ -1,19 +1,34 @@
 package group3.gestionpersonnel.persistence.entitties;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity 
 @Table(name= "employee")
 public class EmployeeDo {
 		
-		
-		private Long employeeId;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	private Long employeeId;
+	
+	
 		private String employeeFirstName;
 		private String employeeLastName;
 		private String employeeMail;
 		private String employeePosition;
+
+		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	    @JoinColumn(name = "manager_id", nullable = false)
+	    @OnDelete(action = OnDeleteAction.CASCADE)
+		@JsonIgnore
 		private ManagerDo employeeManagedBy;
+		
+		@OneToOne( cascade = CascadeType.PERSIST ) 
+	    @JoinColumn( name="fk_mission_id" )
 		private MissionDo employeeMission;
 		
 		
