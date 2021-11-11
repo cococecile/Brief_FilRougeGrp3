@@ -114,7 +114,7 @@ public class MissionServiceImpl implements IMissionService {
 
     @Override
     public void deleteMissionById(Long missionId) {
-        if (isNotNullAndNotEmpty(missionId)) {
+        if (missionId!=null && missionId!=0 ) {
             missionDao.deleteById(missionId);
             return;
         }

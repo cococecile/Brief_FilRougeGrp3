@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
- * This class represents a Mission entity, with annotations for Database
+ * This class represents a {@link MissionDo} entity, with annotations for Database
  * persistence / mapping. A mission can be assigned to one employee only, or
  * unassigned. A mission is always related to one department.
  * 
