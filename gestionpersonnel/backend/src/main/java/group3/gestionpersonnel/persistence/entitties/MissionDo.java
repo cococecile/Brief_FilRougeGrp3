@@ -8,62 +8,63 @@ import java.util.Date;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * This class represents a Mission entity, with annotations for Database
- * persistence / mapping.
- * A mission can be assigned to one employee only, or unassigned.
- * A mission is always related to one department.
+ * persistence / mapping. A mission can be assigned to one employee only, or
+ * unassigned. A mission is always related to one department.
  * 
  * @author Caroline(Group3)
  *
  */
 @Entity
-@Table(name="mission")
+@Table(name = "mission")
 public class MissionDo {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="mission_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "mission_id")
 	private Long missionId;
-	
-	@Column(name="mission_name")
+
+	@Column(name = "mission_name")
 	private String missionName;
-	
-	@Column(name="mission_start_date")
-	private Date missionStartDate;
-	
-	@Column(name="mission_end_date")
+
+	@Column(name = "mission_start_date")
+	private String missionStartDate;
+
+	@Column(name = "mission_end_date")
 	private Date missionEndDate;
-	
-	@Column(name="mission_description")
+
+	@Column(name = "mission_description")
 	private String missionDescription;
-	
-	@Column(name="mission_type")
+
+	@Column(name = "mission_type")
 	private String missionType;
-	
-	@OneToOne(mappedBy="employeeMission")
+
+	@OneToOne(mappedBy = "employeeMission")	
 	@JsonManagedReference
 	private EmployeeDo missionAssignedTo;
-	
+
 	@ManyToOne
-	@JoinColumn(name="fk_mission_issued_by")
+	@JoinColumn(name = "fk_mission_issued_by")
 	@JsonBackReference
 	private DepartmentDo missionIssuedBy;
-	
+
 	/**
 	 * Default constructor
 	 */
-	public MissionDo() {}
-	
+	public MissionDo() {
+	}
+
 	/**
 	 * Constructor with Id param.Rather use this than id setter.
+	 * 
 	 * @param missionId the id to be passed as missionId.
 	 */
 	public MissionDo(final Long missionId) {
 		this.missionId = missionId;
 	}
-	
 
 	/**
 	 * @return the missionId
@@ -82,7 +83,7 @@ public class MissionDo {
 	/**
 	 * @return the missionStartDate
 	 */
-	public Date getMissionStartDate() {
+	public String getMissionStartDate() {
 		return missionStartDate;
 	}
 
@@ -122,9 +123,8 @@ public class MissionDo {
 	}
 
 	/**
-	 * @param missionId the missionId to set
-	 * Rather use constructor with Id param than this setter whenever it is 
-	 * possible.
+	 * @param missionId the missionId to set Rather use constructor with Id param
+	 *                  than this setter whenever it is possible.
 	 */
 	public void setMissionId(final Long missionId) {
 		this.missionId = missionId;
@@ -140,7 +140,7 @@ public class MissionDo {
 	/**
 	 * @param missionStartDate the missionStartDate to set
 	 */
-	public void setMissionStartDate(final Date missionStartDate) {
+	public void setMissionStartDate(final String missionStartDate) {
 		this.missionStartDate = missionStartDate;
 	}
 
@@ -179,8 +179,6 @@ public class MissionDo {
 		this.missionIssuedBy = missionIssuedBy;
 	}
 
-	
-	
 	@Override
 	public String toString() {
 		return "MissionDo [" + (missionId != null ? "missionId=" + missionId + ", " : "")
@@ -192,11 +190,6 @@ public class MissionDo {
 				+ (missionAssignedTo != null ? "missionAssignedTo=" + missionAssignedTo + ", " : "")
 				+ (missionIssuedBy != null ? "missionIssuedBy=" + missionIssuedBy : "") + "]";
 	}
-	
-	
-	
-	
-	
-	
 
 }
+

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import group3.gestionpersonnel.business.services.interfaces.IMissionService;
+import group3.gestionpersonnel.business.utils.NullChecker;
 import group3.gestionpersonnel.exceptions.NullBodyException;
 import group3.gestionpersonnel.persistence.dao.*;
 import group3.gestionpersonnel.persistence.entitties.*;
@@ -41,11 +42,12 @@ public class MissionServiceImpl implements IMissionService {
     @Override
     public void saveMission(MissionDto missionToCreate) {
         LOGGER.info("--- MISION SERVICE SAVE METHOD ---");
-        if (isNotNullAndNotEmpty(missionToCreate.getMissionName())
-                && isNotNullAndNotEmpty(missionToCreate.getMissionDescription())
-                && isNotNullAndNotEmpty(missionToCreate.getMissionType())
-                && isNotNullAndNotEmpty(missionToCreate.getMissionStartDate())
-                && isNotNullAndNotEmpty(missionToCreate.getMissionEndDate())) {
+        if(missionToCreate!=null 
+                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionName())
+                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionDescription())
+                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionType())
+                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionStartDate())
+                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionEndDate())) {
             mapper.getConfiguration().setAmbiguityIgnored(true);
             MissionDo missionConvertedForDatabase = mapper.map(missionToCreate, MissionDo.class);
             missionDao.save(missionConvertedForDatabase);
@@ -118,17 +120,6 @@ public class MissionServiceImpl implements IMissionService {
         }
         throw new NullBodyException(
                 "The required parameter 'id' has not been provided. Please provide valid id and retry");
-    }
-
-    private <T> boolean isNotNullAndNotEmpty(T testObject) {
-        Boolean result = false;
-        if (testObject != null) {
-            result = true;
-        }
-        if (testObject.getClass().equals(String.class) && ((String) testObject).trim().isEmpty()) {
-            result = false;
-        }
-        return result;
     }
 
     private List<MissionDto> convertList(List<MissionDo> listFromDatabase) {
