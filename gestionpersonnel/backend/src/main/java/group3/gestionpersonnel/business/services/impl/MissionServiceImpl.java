@@ -42,8 +42,7 @@ public class MissionServiceImpl implements IMissionService {
     @Override
     public void saveMission(MissionDto missionToCreate) {
         LOGGER.info("--- MISION SERVICE SAVE METHOD ---");
-        if(missionToCreate!=null 
-                && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionName())
+        if (missionToCreate != null && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionName())
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionDescription())
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionType())
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionStartDate())
@@ -86,6 +85,9 @@ public class MissionServiceImpl implements IMissionService {
         if (optMissionDo.isPresent()) {
             LOGGER.info("Optional found");
             MissionDo missionDo = optMissionDo.get();
+            if(missionDo.getMissionAssignedTo()!=null){
+            missionDo.getMissionAssignedTo().setEmployeeMission(null);
+            }        
             MissionDto convertedResult = mapper.map(missionDo, MissionDto.class);
             return convertedResult;
         }
@@ -115,7 +117,7 @@ public class MissionServiceImpl implements IMissionService {
 
     @Override
     public void deleteMissionById(Long missionId) {
-        if (missionId!=null && missionId!=0 ) {
+        if (missionId != null && missionId != 0) {
             missionDao.deleteById(missionId);
             return;
         }
@@ -129,6 +131,9 @@ public class MissionServiceImpl implements IMissionService {
             for (MissionDo missionFromDatabase : listFromDatabase) {
                 MissionDto missionToReturn = mapper.map(missionFromDatabase, MissionDto.class);
                 missionToReturn.getMissionIssuedBy().setDepartmentMissions(null);
+                if (missionToReturn.getMissionAssignedTo() != null) {
+                    missionToReturn.getMissionAssignedTo().setEmployeeMission(null);
+                }
                 convertedList.add(missionToReturn);
             }
         }
