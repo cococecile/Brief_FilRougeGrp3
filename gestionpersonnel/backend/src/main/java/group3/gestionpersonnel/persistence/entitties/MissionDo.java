@@ -43,7 +43,7 @@ public class MissionDo {
 	private String missionType;
 	
 	@OneToOne(mappedBy="employeeMission")
-	@JsonBackReference
+	@JsonManagedReference
 	private EmployeeDo missionAssignedTo;
 	
 	@ManyToOne

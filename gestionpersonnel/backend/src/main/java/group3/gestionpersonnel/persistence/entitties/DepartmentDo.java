@@ -32,7 +32,7 @@ public class DepartmentDo {
 	@Column(name="department_name")
 	private String departmentName;
 	
-	@OneToMany(mappedBy="employeeDepartment")
+	@OneToMany(mappedBy="employeeDepartment")	
 	private List<EmployeeDo> departmentEmployees;
 	
 	@OneToMany(mappedBy="missionIssuedBy")

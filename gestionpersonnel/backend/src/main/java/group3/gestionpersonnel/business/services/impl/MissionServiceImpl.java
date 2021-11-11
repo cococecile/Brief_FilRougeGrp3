@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import group3.gestionpersonnel.business.services.interfaces.IMissionService;
 import group3.gestionpersonnel.exceptions.NullBodyException;
-import group3.gestionpersonnel.persistence.dao.IDepartmentDao;
-import group3.gestionpersonnel.persistence.dao.IEmployeeDao;
-import group3.gestionpersonnel.persistence.dao.IMissionDao;
-import group3.gestionpersonnel.persistence.entitties.DepartmentDo;
-import group3.gestionpersonnel.persistence.entitties.EmployeeDo;
-import group3.gestionpersonnel.persistence.entitties.MissionDo;
+import group3.gestionpersonnel.persistence.dao.*;
+import group3.gestionpersonnel.persistence.entitties.*;
 import group3.gestionpersonnel.presentation.model.MissionDto;
 
 /**
@@ -37,20 +35,18 @@ public class MissionServiceImpl implements IMissionService {
     private IDepartmentDao departmentDao;
     @Autowired
     private IEmployeeDao employeeDao;
-    private ModelMapper mapper;
+    private ModelMapper mapper = new ModelMapper();
+    private static final Logger LOGGER = LoggerFactory.getLogger(MissionServiceImpl.class);
 
     @Override
     public void saveMission(MissionDto missionToCreate) {
-        if (!isNotNullAndNotEmpty(missionToCreate)) {
-            throw new NullBodyException(
-                    "No Mission object had been found in your request's body. Please provide required body and retry.");
-        }
+        LOGGER.info("--- MISION SERVICE SAVE METHOD ---");
         if (isNotNullAndNotEmpty(missionToCreate.getMissionName())
                 && isNotNullAndNotEmpty(missionToCreate.getMissionDescription())
                 && isNotNullAndNotEmpty(missionToCreate.getMissionType())
                 && isNotNullAndNotEmpty(missionToCreate.getMissionStartDate())
                 && isNotNullAndNotEmpty(missionToCreate.getMissionEndDate())) {
-
+            mapper.getConfiguration().setAmbiguityIgnored(true);
             MissionDo missionConvertedForDatabase = mapper.map(missionToCreate, MissionDo.class);
             missionDao.save(missionConvertedForDatabase);
             return;
@@ -73,7 +69,6 @@ public class MissionServiceImpl implements IMissionService {
             throw new ResourceNotFoundException(
                     "You requested a list of missions from a department, but that department does not exist. Please provide a valid department's id and retry.");
         }
-
         List<MissionDo> listFromDatabase = new ArrayList<MissionDo>();
         List<MissionDto> convertedList = new ArrayList<MissionDto>();
         listFromDatabase = department.getDepartmentMissionPool();
@@ -84,13 +79,17 @@ public class MissionServiceImpl implements IMissionService {
 
     @Override
     public MissionDto getMissionById(Long missionId) {
-        MissionDo missionDo = missionDao.getById(missionId);
-        if (missionDo == null) {
-            throw new ResourceNotFoundException(
-                    "No resource matching provided id has been found. Please provide valid id and retry");
+        Optional<MissionDo> optMissionDo = missionDao.findById(missionId);
+        LOGGER.info("MISSION DO GOTTEN");
+        if (optMissionDo.isPresent()) {
+            LOGGER.info("Optional found");
+            MissionDo missionDo = optMissionDo.get();
+            MissionDto convertedResult = mapper.map(missionDo, MissionDto.class);
+            return convertedResult;
         }
-        MissionDto convertedResult = mapper.map(missionDo, MissionDto.class);
-        return convertedResult;
+        LOGGER.error("NOT FOUND");
+        throw new ResourceNotFoundException(
+                "No resource matching provided id has been found. Please provide valid id and retry");
     }
 
     @Override
@@ -107,13 +106,15 @@ public class MissionServiceImpl implements IMissionService {
             }
 
         }
-
+        throw new ResourceNotFoundException(
+                "No resource matching provided id has been found. Please provide valid id and retry");
     }
 
     @Override
     public void deleteMissionById(Long missionId) {
         if (isNotNullAndNotEmpty(missionId)) {
             missionDao.deleteById(missionId);
+            return;
         }
         throw new NullBodyException(
                 "The required parameter 'id' has not been provided. Please provide valid id and retry");

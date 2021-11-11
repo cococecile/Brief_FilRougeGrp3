@@ -16,15 +16,6 @@ public class GestionpersonnelApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionpersonnelApplication.class, args);
 
-		/* TODO : test and remove
-		ModelMapper modelMapper = new ModelMapper();
-		MissionDo missionDo = new MissionDo((long) 3);
-		missionDo.setMissionName("MissionDO");
-		MissionDto missionDto = modelMapper.map(missionDo, MissionDto.class);
-		System.out.println(missionDto.toString());	*/
-		
-
-
 	}
 
 }
