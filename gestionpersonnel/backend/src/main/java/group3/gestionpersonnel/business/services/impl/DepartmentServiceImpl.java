@@ -52,6 +52,10 @@ public class DepartmentServiceImpl implements IDepartmentService {
         List<DepartmentDo> listFromDatabase = departmentDao.findAll();
         if (listFromDatabase != null) {
             List<DepartmentDto> convertedList = new ArrayList<DepartmentDto>();
+            for (DepartmentDo departmentFromDatabase : listFromDatabase) {
+                DepartmentDto departmentFromList = mapper.map(departmentFromDatabase, DepartmentDto.class);
+                convertedList.add(departmentFromList);
+            }
             return convertedList;
         }
         throw new ResourceNotFoundException(
