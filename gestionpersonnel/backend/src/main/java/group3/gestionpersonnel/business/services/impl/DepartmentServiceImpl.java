@@ -16,7 +16,12 @@ import group3.gestionpersonnel.business.utils.NullChecker;
 import group3.gestionpersonnel.exceptions.NullBodyException;
 import group3.gestionpersonnel.persistence.dao.IDepartmentDao;
 import group3.gestionpersonnel.persistence.entitties.DepartmentDo;
+import group3.gestionpersonnel.persistence.entitties.EmployeeDo;
+import group3.gestionpersonnel.persistence.entitties.ManagerDo;
+import group3.gestionpersonnel.persistence.entitties.MissionDo;
 import group3.gestionpersonnel.presentation.model.DepartmentDto;
+import group3.gestionpersonnel.presentation.model.EmployeeDto;
+import group3.gestionpersonnel.presentation.model.MissionDto;
 
 /**
  * This service manages business logic for CRUD operations concerning
@@ -37,7 +42,6 @@ public class DepartmentServiceImpl implements IDepartmentService {
     public void saveDepartment(DepartmentDto departmentToCreate) {
         LOGGER.info("--- DEPARTMENT SERVICE SAVE METHOD ---");
         if (departmentToCreate != null && NullChecker.isNotNullAndNotEmpty(departmentToCreate.getDepartmentName())) {
-            mapper.getConfiguration().setAmbiguityIgnored(true);
             DepartmentDo departmentConvertedForDatabase = mapper.map(departmentToCreate, DepartmentDo.class);
             departmentDao.save(departmentConvertedForDatabase);
             return;
@@ -51,10 +55,11 @@ public class DepartmentServiceImpl implements IDepartmentService {
         LOGGER.info("--- DEPARTMENT SERVICE GETALLDEPARTMENT METHOD ---");
         List<DepartmentDo> listFromDatabase = departmentDao.findAll();
         if (listFromDatabase != null) {
+            LOGGER.info("--- AVoiding infinite recursion : ---");
             List<DepartmentDto> convertedList = new ArrayList<DepartmentDto>();
             for (DepartmentDo departmentFromDatabase : listFromDatabase) {
-                DepartmentDto departmentFromList = mapper.map(departmentFromDatabase, DepartmentDto.class);
-                convertedList.add(departmentFromList);
+                DepartmentDto convertedDepartment = removeRecursivityFromChildren(departmentFromDatabase);
+                convertedList.add(convertedDepartment);
             }
             return convertedList;
         }
@@ -68,9 +73,8 @@ public class DepartmentServiceImpl implements IDepartmentService {
         LOGGER.info("--- DEPARTMENT SERVICE GETBYID METHOD ---");
         Optional<DepartmentDo> optDepartmentDo = departmentDao.findById(departmentId);
         if (optDepartmentDo.isPresent()) {
-            LOGGER.info("Optional found");
             DepartmentDo departmentDo = optDepartmentDo.get();
-            DepartmentDto convertedResult = mapper.map(departmentDo, DepartmentDto.class);
+            DepartmentDto convertedResult = removeRecursivityFromChildren(departmentDo);
             return convertedResult;
         }
         LOGGER.error("NOT FOUND");
@@ -88,4 +92,37 @@ public class DepartmentServiceImpl implements IDepartmentService {
                 "The required parameter 'id' has not been provided. Please provide valid id and retry");
     }
 
+    private DepartmentDto removeRecursivityFromChildren(DepartmentDo departmentFromDatabase) {
+        LOGGER.info("--- Converting department removing recursive children --- ");
+        List<MissionDto> missionPool = new ArrayList<MissionDto>();
+        List<MissionDo> missionDoPool = departmentFromDatabase.getDepartmentMissionPool();
+        if (missionDoPool != null) {
+            for (MissionDo missionDo : missionDoPool) {
+                MissionDto missionDto = mapper.map(missionDo, MissionDto.class);
+                missionDto.setMissionIssuedBy(null);
+                missionPool.add(missionDto);
+            }
+        }
+        LOGGER.info("---Employee list ---");
+        List<EmployeeDto> employeePool = new ArrayList<EmployeeDto>();
+        List<EmployeeDo> employeeDoPool = departmentFromDatabase.getDepartmentEmployees();
+        if (employeeDoPool != null) {
+            for (EmployeeDo employeeDo : employeeDoPool) {
+                EmployeeDto employeeDto = mapper.map(employeeDo, EmployeeDto.class);
+                employeeDto.setEmployeeDepartment(null);
+                employeePool.add(employeeDto);
+            }
+        }
+        ManagerDo manager = departmentFromDatabase.getDepartmentChief();
+        if(manager!=null){
+        manager.setManagerDepartment(null);
+        }
+        departmentFromDatabase.setDepartmentChief(manager);
+        DepartmentDto departmentFromList = mapper.map(departmentFromDatabase, DepartmentDto.class);
+        departmentFromList.setDepartmentMissions(missionPool);
+        departmentFromList.setDepartmentEmployees(employeePool);
+        return departmentFromList;
+    }
+
 }
+

@@ -102,6 +102,7 @@ public class MissionServiceImpl implements IMissionService {
             if (optMission.isPresent()) {
                 EmployeeDo employee = optEmployee.get();
                 MissionDo mission = optMission.get();
+                mission.setMissionAssignedTo(null);
                 employee.setEmployeeMission(mission);
                 employeeDao.save(employee);
                 return;
@@ -127,6 +128,7 @@ public class MissionServiceImpl implements IMissionService {
         if (listFromDatabase != null) {
             for (MissionDo missionFromDatabase : listFromDatabase) {
                 MissionDto missionToReturn = mapper.map(missionFromDatabase, MissionDto.class);
+                missionToReturn.getMissionIssuedBy().setDepartmentMissions(null);
                 convertedList.add(missionToReturn);
             }
         }
