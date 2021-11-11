@@ -31,7 +31,7 @@ public class MissionController {
      * 
      * @param missionToCreate the
      *                        {@link group3.gestionpersonnel.presentation.model.MissionDto MissionDto}
-     *                        object we want to create.
+     *                        to save in database.
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
