@@ -47,8 +47,7 @@ public class MissionDo {
 	private EmployeeDo missionAssignedTo;
 	
 	@ManyToOne
-	@Column(name="fk_mission_issued_by")
-	@JoinColumn(name="department_id")
+	@JoinColumn(name="fk_mission_issued_by")
 	@JsonBackReference
 	private DepartmentDo missionIssuedBy;
 	
@@ -69,56 +68,56 @@ public class MissionDo {
 	/**
 	 * @return the missionId
 	 */
-	public final Long getMissionId() {
+	public Long getMissionId() {
 		return missionId;
 	}
 
 	/**
 	 * @return the missionName
 	 */
-	public final String getMissionName() {
+	public String getMissionName() {
 		return missionName;
 	}
 
 	/**
 	 * @return the missionStartDate
 	 */
-	public final Date getMissionStartDate() {
+	public Date getMissionStartDate() {
 		return missionStartDate;
 	}
 
 	/**
 	 * @return the missionEndDate
 	 */
-	public final Date getMissionEndDate() {
+	public Date getMissionEndDate() {
 		return missionEndDate;
 	}
 
 	/**
 	 * @return the missionDescription
 	 */
-	public final String getMissionDescription() {
+	public String getMissionDescription() {
 		return missionDescription;
 	}
 
 	/**
 	 * @return the missionType
 	 */
-	public final String getMissionType() {
+	public String getMissionType() {
 		return missionType;
 	}
 
 	/**
 	 * @return the missionAssignedTo
 	 */
-	public final EmployeeDo getMissionAssignedTo() {
+	public EmployeeDo getMissionAssignedTo() {
 		return missionAssignedTo;
 	}
 
 	/**
 	 * @return the missionIssuedBy
 	 */
-	public final DepartmentDo getMissionIssuedBy() {
+	public DepartmentDo getMissionIssuedBy() {
 		return missionIssuedBy;
 	}
 
@@ -127,56 +126,56 @@ public class MissionDo {
 	 * Rather use constructor with Id param than this setter whenever it is 
 	 * possible.
 	 */
-	public final void setMissionId(final Long missionId) {
+	public void setMissionId(final Long missionId) {
 		this.missionId = missionId;
 	}
 
 	/**
 	 * @param missionName the missionName to set
 	 */
-	public final void setMissionName(final String missionName) {
+	public void setMissionName(final String missionName) {
 		this.missionName = missionName;
 	}
 
 	/**
 	 * @param missionStartDate the missionStartDate to set
 	 */
-	public final void setMissionStartDate(final Date missionStartDate) {
+	public void setMissionStartDate(final Date missionStartDate) {
 		this.missionStartDate = missionStartDate;
 	}
 
 	/**
 	 * @param missionEndDate the missionEndDate to set
 	 */
-	public final void setMissionEndDate(final Date missionEndDate) {
+	public void setMissionEndDate(final Date missionEndDate) {
 		this.missionEndDate = missionEndDate;
 	}
 
 	/**
 	 * @param missionDescription the missionDescription to set
 	 */
-	public final void setMissionDescription(final String missionDescription) {
+	public void setMissionDescription(final String missionDescription) {
 		this.missionDescription = missionDescription;
 	}
 
 	/**
 	 * @param missionType the missionType to set
 	 */
-	public final void setMissionType(final String missionType) {
+	public void setMissionType(final String missionType) {
 		this.missionType = missionType;
 	}
 
 	/**
 	 * @param missionAssignedTo the missionAssignedTo to set
 	 */
-	public final void setMissionAssignedTo(final EmployeeDo missionAssignedTo) {
+	public void setMissionAssignedTo(final EmployeeDo missionAssignedTo) {
 		this.missionAssignedTo = missionAssignedTo;
 	}
 
 	/**
 	 * @param missionIssuedBy the missionIssuedBy to set
 	 */
-	public final void setMissionIssuedBy(final DepartmentDo missionIssuedBy) {
+	public void setMissionIssuedBy(final DepartmentDo missionIssuedBy) {
 		this.missionIssuedBy = missionIssuedBy;
 	}
 
