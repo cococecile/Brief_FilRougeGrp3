@@ -1,24 +1,51 @@
 package group3.gestionpersonnel.persistence.entitties;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity 
 @Table(name= "employee")
 public class EmployeeDo {
 		
-		
-		private Long employeeId;
-		private String employeeFirstName;
-		private String employeeLastName;
-		private String employeeMail;
-		private String employeePosition;
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="employee_id")
+	private Long employeeId;
+	
+	@Column(name="employee_firstname")
+	private String employeeFirstName;
+	
+	@Column(name="employee_lastname")
+	private String employeeLastName;
+	
+	@Column(name="employee_mail")
+	private String employeeMail;
+	
+	@Column(name="employee_position")
+	private String employeePosition;
+
+		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@Column(name="fk_employee_managed_by")
+	    @JoinColumn(name = "manager_id", nullable = false)
+		@JsonIgnore
 		private ManagerDo employeeManagedBy;
+		
+		@OneToOne( cascade = CascadeType.PERSIST )
+		@Column(name="fk_mission_id")
+	    @JoinColumn( name="mission_id" )
+		@JsonManagedReference
 		private MissionDo employeeMission;
+		
+		@ManyToOne(fetch = FetchType.LAZY, optional = false)
+		@Column(name="fk_employee_department")
+	    @JoinColumn(name = "department_id", nullable = false)
+		private DepartmentDo employeeDepartment;
 		
 		
 		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
-				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission) {
+				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission, DepartmentDo employeeDepartment) {
 			super();
 			this.employeeId = employeeId;
 			this.employeeFirstName = employeeFirstName;
@@ -27,6 +54,7 @@ public class EmployeeDo {
 			this.employeePosition = employeePosition;
 			this.employeeManagedBy = employeeManagedBy;
 			this.employeeMission = employeeMission;
+			this.employeeDepartment = employeeDepartment;
 		}
 
 
@@ -97,6 +125,16 @@ public class EmployeeDo {
 
 		public void setEmployeeMission(MissionDo employeeMission) {
 			this.employeeMission = employeeMission;
+		}
+
+
+		public DepartmentDo getEmployeeDepartment() {
+			return employeeDepartment;
+		}
+
+
+		public void setEmployeeDepartment(DepartmentDo employeeDepartment) {
+			this.employeeDepartment = employeeDepartment;
 		}
 
 }
