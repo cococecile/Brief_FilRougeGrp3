@@ -3,19 +3,17 @@
  */
 package group3.gestionpersonnel.presentation.model;
 
-import java.util.Date;
-
 /**
  * This class represents a Mission Data Transfert object.
  * 
- * @See group3.gestionpersonnel.persistence.entitties.MissionDo
+ * @See {@link group3.gestionpersonnel.persistence.entitties.MissionDo MissionDo}
  * @author Caroline (Group3)
  */
 public class MissionDto {
 	private Long missionId;
 	private String missionName;
-	private Date missionStartDate;
-	private Date missionEndDate;
+	private String missionStartDate;
+	private String missionEndDate;
 	private String missionDescription;
 	private String missionType;
 	private EmployeeDto missionAssignedTo;
@@ -54,14 +52,14 @@ public class MissionDto {
 	/**
 	 * @return the missionStartDate
 	 */
-	public final Date getMissionStartDate() {
+	public final String getMissionStartDate() {
 		return missionStartDate;
 	}
 
 	/**
 	 * @return the missionEndDate
 	 */
-	public final Date getMissionEndDate() {
+	public final String getMissionEndDate() {
 		return missionEndDate;
 	}
 
@@ -111,14 +109,14 @@ public class MissionDto {
 	/**
 	 * @param missionStartDate the missionStartDate to set
 	 */
-	public final void setMissionStartDate(final Date missionStartDate) {
+	public final void setMissionStartDate(final String missionStartDate) {
 		this.missionStartDate = missionStartDate;
 	}
 
 	/**
 	 * @param missionEndDate the missionEndDate to set
 	 */
-	public final void setMissionEndDate(final Date missionEndDate) {
+	public final void setMissionEndDate(final String missionEndDate) {
 		this.missionEndDate = missionEndDate;
 	}
 
