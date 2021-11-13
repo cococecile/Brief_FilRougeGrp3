@@ -15,12 +15,12 @@ public class NullChecker {
      * @param objectToCheck the object to check
      * @return true if object is not null and not empty, false otherwise.
      */
-    public static boolean isNotNullAndNotEmpty(String stringToCheck) {
+    public static boolean isNotNullAndNotEmpty(Object objectToCheck) {
         Boolean result = false;
-        if (stringToCheck != null) {
+        if (objectToCheck != null) {
             result = true;
         }
-        if (stringToCheck.getClass().equals(String.class) && ((String) stringToCheck).trim().isEmpty()) {
+        if (objectToCheck.getClass().equals(String.class) && ((String) objectToCheck).trim().isEmpty()) {
             result = false;
         }
         return result;

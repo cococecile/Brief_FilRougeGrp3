@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class NullBodyException extends RuntimeException {
 
     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
      * Constructor invoked when exception is thrown
      * This exception appears when a request is made but the request's body contains no valid object.
      * @param msg the message of the exception.
