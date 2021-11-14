@@ -40,12 +40,13 @@ public class EmployeeServiceImpl implements IEmployeeService {
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeFirstName())
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeLastName()))
 		 {
-            EmployeeDo EmployeeConvertedForDatabase = mapper.map(employeeToCreate, EmployeeDo.class);
-            employeeDao.save(EmployeeConvertedForDatabase);
+            EmployeeDo employeeConvertedForDatabase = mapper.map(employeeToCreate, EmployeeDo.class);
+            employeeDao.save(employeeConvertedForDatabase);
             return;
         }
         throw new NullBodyException(
-                "One of the required fields is missing ! Please check all required fields are provided and retry.");	}
+                "One of the required fields is missing ! Please check all required fields are provided and retry.");
+        }
 
 	@Override
 	public EmployeeDto getEmployeeById(Long employeeId) {
