@@ -51,7 +51,7 @@ public class ManagerServiceImpl implements IManagerService {
 	}
 	
 	@Override
-	public void saveManager(ManagerDo managerToCreate) {
+	public void saveManager(ManagerDto managerToCreate) {
 		if (managerToCreate != null
 				&& NullChecker.isNotNullAndNotEmpty(managerToCreate.getManagerFirstName())
 				&& NullChecker.isNotNullAndNotEmpty(managerToCreate.getManagerLastName()))

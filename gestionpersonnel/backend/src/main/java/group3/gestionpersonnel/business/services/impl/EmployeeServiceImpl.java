@@ -35,7 +35,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 "You requested a list of missions from a department, but that department does not exist. Please provide a valid department's id and retry.");	}
 
 	@Override
-	public void saveEmployee(EmployeeDo employeeToCreate) {
+	public void saveEmployee(EmployeeDto employeeToCreate) {
 		if (employeeToCreate != null
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeFirstName())
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeLastName()))
