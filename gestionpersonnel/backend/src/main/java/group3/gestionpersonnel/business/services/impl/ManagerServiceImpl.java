@@ -26,17 +26,15 @@ public class ManagerServiceImpl implements IManagerService {
 	@Override
 	public List<ManagerDto> getAllManagers() {
 		List<ManagerDo> listFromDatabase = managerDao.findAll();
+		List<ManagerDto> convertedList = new ArrayList<ManagerDto>();
         if (listFromDatabase != null) {
-            List<ManagerDto> convertedList = new ArrayList<ManagerDto>();
             for (ManagerDo managerFromDatabase : listFromDatabase) {
                 ManagerDto convertedManager = removeRecursivityFromChildren(managerFromDatabase);
                 convertedList.add(convertedManager);
             }
-            return convertedList;
         }
-        throw new ResourceNotFoundException(
-                "You requested a list of missions from a department, but that department does not exist. Please provide a valid department's id and retry.");
-        }
+        return convertedList;
+    }
 	
 	@Override
 	public ManagerDto getManagerById(Long managerId) {

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 
 import group3.gestionpersonnel.business.services.interfaces.IEmployeeService;
 import group3.gestionpersonnel.business.utils.NullChecker;
@@ -15,6 +16,7 @@ import group3.gestionpersonnel.persistence.dao.IEmployeeDao;
 import group3.gestionpersonnel.persistence.entitties.*;
 import group3.gestionpersonnel.presentation.model.*;
 
+@Service
 public class EmployeeServiceImpl implements IEmployeeService {
 	
 	@Autowired
@@ -23,16 +25,15 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	
 	public List<EmployeeDto> getAllEmployees() {
 		List<EmployeeDo> listFromDatabase = employeeDao.findAll();
-        if (listFromDatabase != null) {
-            List<EmployeeDto> convertedList = new ArrayList<EmployeeDto>();
+		List<EmployeeDto> convertedList = new ArrayList<EmployeeDto>();
+        if (listFromDatabase != null) {            
             for (EmployeeDo employeeFromDatabase : listFromDatabase) {
                 EmployeeDto convertedEmployee = removeRecursivityFromChildren(employeeFromDatabase);
                 convertedList.add(convertedEmployee);
             }
-            return convertedList;
         }
-        throw new ResourceNotFoundException(
-                "You requested a list of missions from a department, but that department does not exist. Please provide a valid department's id and retry.");	}
+        return convertedList;
+    }
 
 	@Override
 	public void saveEmployee(EmployeeDto employeeToCreate) {
