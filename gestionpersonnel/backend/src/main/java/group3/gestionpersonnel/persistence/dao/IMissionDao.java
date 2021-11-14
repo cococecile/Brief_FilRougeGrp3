@@ -1,6 +1,8 @@
 package group3.gestionpersonnel.persistence.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import group3.gestionpersonnel.persistence.entitties.MissionDo;
 
@@ -11,6 +13,8 @@ import group3.gestionpersonnel.persistence.entitties.MissionDo;
  * 
  * @author Caroline(group3)
  */
+@Repository
+@Transactional
 public interface IMissionDao extends JpaRepository<MissionDo, Long> {
 
 }

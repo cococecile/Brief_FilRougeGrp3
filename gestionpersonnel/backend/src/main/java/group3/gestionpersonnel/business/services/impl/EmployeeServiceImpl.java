@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import group3.gestionpersonnel.business.services.interfaces.IEmployeeService;
 import group3.gestionpersonnel.business.utils.NullChecker;
+import group3.gestionpersonnel.business.utils.mappers.PreventRecursiveMapper;
 import group3.gestionpersonnel.exceptions.NullBodyException;
 import group3.gestionpersonnel.persistence.dao.IEmployeeDao;
 import group3.gestionpersonnel.persistence.entitties.*;
@@ -21,14 +22,14 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	
 	@Autowired
 	IEmployeeDao employeeDao;
-	private ModelMapper mapper = new ModelMapper();
+	private ModelMapper mapper = PreventRecursiveMapper.getEmployeeMapper();
 	
 	public List<EmployeeDto> getAllEmployees() {
 		List<EmployeeDo> listFromDatabase = employeeDao.findAll();
 		List<EmployeeDto> convertedList = new ArrayList<EmployeeDto>();
         if (listFromDatabase != null) {            
             for (EmployeeDo employeeFromDatabase : listFromDatabase) {
-                EmployeeDto convertedEmployee = removeRecursivityFromChildren(employeeFromDatabase);
+                EmployeeDto convertedEmployee = mapper.map(employeeFromDatabase, EmployeeDto.class);
                 convertedList.add(convertedEmployee);
             }
         }
@@ -42,6 +43,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeLastName()))
 		 {
             EmployeeDo employeeConvertedForDatabase = mapper.map(employeeToCreate, EmployeeDo.class);
+            System.out.println("EMPLOYEE : "+employeeConvertedForDatabase.toString());
             employeeDao.save(employeeConvertedForDatabase);
             return;
         }
@@ -54,7 +56,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		Optional<EmployeeDo> optEmployeeDo = employeeDao.findById(employeeId);
         if (optEmployeeDo.isPresent()) {
             EmployeeDo employeeDo = optEmployeeDo.get();
-            EmployeeDto convertedResult = removeRecursivityFromChildren(employeeDo);
+            EmployeeDto convertedResult = mapper.map(employeeDo, EmployeeDto.class);
             return convertedResult;
         }
         throw new ResourceNotFoundException(
@@ -71,30 +73,5 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 "The required parameter 'id' has not been provided. Please provide valid id and retry");
 		
 	}
-	
-    private EmployeeDto removeRecursivityFromChildren(EmployeeDo employeeFromDatabase) {
-        MissionDo missionDo = employeeFromDatabase.getEmployeeMission();
-        MissionDto missionDto = new MissionDto();
-        if (missionDo != null) {
-        	missionDto = mapper.map(missionDo, MissionDto.class);
-            missionDto.setMissionIssuedBy(null);
-        }
-        DepartmentDto departmentDto = new DepartmentDto();
-        DepartmentDo departmentDo = employeeFromDatabase.getEmployeeDepartment();
-        if (departmentDo != null) {
-        	departmentDto = mapper.map(departmentDo, DepartmentDto.class);
-            departmentDto.setDepartmentEmployees(null);
-            departmentDto.setDepartmentChief(null);
-        }
-        ManagerDo manager = employeeFromDatabase.getEmployeeManagedBy();
-        if(manager!=null){
-        manager.setManagerDepartment(null);
-        }
-        employeeFromDatabase.setEmployeeManagedBy(manager);
-        EmployeeDto employeeFromList = mapper.map(employeeFromDatabase, EmployeeDto.class);
-        employeeFromList.setEmployeeMission(missionDto);
-        employeeFromList.setEmployeeDepartment(departmentDto);
-        return employeeFromList;
-    }
-
+	  
 }

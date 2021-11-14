@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,14 +33,16 @@ public class DepartmentDo {
 	@Column(name="department_name")
 	private String departmentName;
 	
-	@OneToMany(mappedBy="employeeDepartment")	
+	@OneToMany(mappedBy="employeeDepartment", fetch = FetchType.LAZY)
+	@JsonManagedReference	
 	private List<EmployeeDo> departmentEmployees;
 	
-	@OneToMany(mappedBy="missionIssuedBy")
+	@OneToMany(mappedBy="missionIssuedBy", fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private List<MissionDo>departmentMissionPool;
 	
-	@OneToOne (mappedBy="managerDepartment")
+	@OneToOne(mappedBy="managerDepartment")
+	@JsonManagedReference
 	private ManagerDo departmentChief;
 	
 	/**

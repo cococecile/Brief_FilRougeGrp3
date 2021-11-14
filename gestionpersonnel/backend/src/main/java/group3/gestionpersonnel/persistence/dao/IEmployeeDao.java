@@ -2,6 +2,7 @@ package group3.gestionpersonnel.persistence.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import group3.gestionpersonnel.persistence.entitties.EmployeeDo;
 
@@ -13,5 +14,6 @@ import group3.gestionpersonnel.persistence.entitties.EmployeeDo;
  * @author Caroline(Group3)
  */
 @Repository
+@Transactional
 public interface IEmployeeDao extends JpaRepository<EmployeeDo, Long> {
 }

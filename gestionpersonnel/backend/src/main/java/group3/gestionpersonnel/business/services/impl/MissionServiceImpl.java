@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import group3.gestionpersonnel.business.services.interfaces.IMissionService;
 import group3.gestionpersonnel.business.utils.NullChecker;
+import group3.gestionpersonnel.business.utils.mappers.PreventRecursiveMapper;
 import group3.gestionpersonnel.exceptions.NullBodyException;
 import group3.gestionpersonnel.persistence.dao.*;
 import group3.gestionpersonnel.persistence.entitties.*;
@@ -36,7 +37,7 @@ public class MissionServiceImpl implements IMissionService {
     private IDepartmentDao departmentDao;
     @Autowired
     private IEmployeeDao employeeDao;
-    private ModelMapper mapper = new ModelMapper();
+    private ModelMapper mapper = PreventRecursiveMapper.getMissionMapper();
     private static final Logger LOGGER = LoggerFactory.getLogger(MissionServiceImpl.class);
 
     @Override
@@ -129,11 +130,7 @@ public class MissionServiceImpl implements IMissionService {
         List<MissionDto> convertedList = new ArrayList<MissionDto>();
         if (listFromDatabase != null) {
             for (MissionDo missionFromDatabase : listFromDatabase) {
-                MissionDto missionToReturn = mapper.map(missionFromDatabase, MissionDto.class);
-                missionToReturn.getMissionIssuedBy().setDepartmentMissions(null);
-                if (missionToReturn.getMissionAssignedTo() != null) {
-                    missionToReturn.getMissionAssignedTo().setEmployeeMission(null);
-                }
+                MissionDto missionToReturn = mapper.map(missionFromDatabase, MissionDto.class);               
                 convertedList.add(missionToReturn);
             }
         }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import group3.gestionpersonnel.business.services.interfaces.IManagerService;
 import group3.gestionpersonnel.business.utils.NullChecker;
+import group3.gestionpersonnel.business.utils.mappers.PreventRecursiveMapper;
 import group3.gestionpersonnel.exceptions.NullBodyException;
 import group3.gestionpersonnel.persistence.dao.IManagerDao;
 import group3.gestionpersonnel.persistence.entitties.*;
@@ -21,7 +22,7 @@ public class ManagerServiceImpl implements IManagerService {
 	
 	@Autowired
 	private IManagerDao managerDao;
-	private ModelMapper mapper = new ModelMapper();
+	private ModelMapper mapper = PreventRecursiveMapper.getManagerMapper();
 	
 	@Override
 	public List<ManagerDto> getAllManagers() {
@@ -29,7 +30,7 @@ public class ManagerServiceImpl implements IManagerService {
 		List<ManagerDto> convertedList = new ArrayList<ManagerDto>();
         if (listFromDatabase != null) {
             for (ManagerDo managerFromDatabase : listFromDatabase) {
-                ManagerDto convertedManager = removeRecursivityFromChildren(managerFromDatabase);
+                ManagerDto convertedManager = mapper.map(managerFromDatabase, ManagerDto.class);
                 convertedList.add(convertedManager);
             }
         }
@@ -41,7 +42,7 @@ public class ManagerServiceImpl implements IManagerService {
 		Optional<ManagerDo> optManagerDo = managerDao.findById(managerId);
         if (optManagerDo.isPresent()) {
             ManagerDo managerDo = optManagerDo.get();
-            ManagerDto convertedResult = removeRecursivityFromChildren(managerDo);
+            ManagerDto convertedResult = mapper.map(managerDo, ManagerDto.class);
             return convertedResult;
         }
         throw new ResourceNotFoundException(
@@ -72,29 +73,5 @@ public class ManagerServiceImpl implements IManagerService {
                 "The required parameter 'id' has not been provided. Please provide valid id and retry");
 		
 	}
-
-	
-	private ManagerDto removeRecursivityFromChildren(ManagerDo managerFromDatabase) {
-
-        List<EmployeeDto> employeePool = new ArrayList<EmployeeDto>();
-        List<EmployeeDo> employeeDoPool = managerFromDatabase.getManagedEmployees();
-        if (employeeDoPool != null) {
-            for (EmployeeDo employeeDo : employeeDoPool) {
-                EmployeeDto employeeDto = mapper.map(employeeDo, EmployeeDto.class);
-                employeeDto.setEmployeeDepartment(null);
-                employeePool.add(employeeDto);
-            }
-        }
-        DepartmentDo department = managerFromDatabase.getManagerDepartment();
-        if(department!=null){
-        department.setDepartmentChief(null);
-        }
-        managerFromDatabase.setManagerDepartment(department);
-        ManagerDto managerFromList = mapper.map(managerFromDatabase, ManagerDto.class);
-        managerFromList.setManagedEmployees(employeePool);
-        return managerFromList;
-    }
-
-
 
 }

@@ -2,9 +2,6 @@
  * Package Persistence/Entities.
  */
 package group3.gestionpersonnel.persistence.entitties;
-
-import java.util.Date;
-
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -46,8 +43,8 @@ public class MissionDo {
 	@JsonManagedReference
 	private EmployeeDo missionAssignedTo;
 
-	@ManyToOne
-	@JoinColumn(name = "fk_mission_issued_by")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "fk_mission_issued_by", nullable = false)
 	@JsonBackReference
 	private DepartmentDo missionIssuedBy;
 
@@ -62,7 +59,7 @@ public class MissionDo {
 	 * 
 	 * @param missionId the id to be passed as missionId.
 	 */
-	public MissionDo(final Long missionId) {
+	public MissionDo(Long missionId) {
 		this.missionId = missionId;
 	}
 
@@ -126,56 +123,56 @@ public class MissionDo {
 	 * @param missionId the missionId to set Rather use constructor with Id param
 	 *                  than this setter whenever it is possible.
 	 */
-	public void setMissionId(final Long missionId) {
+	public void setMissionId(Long missionId) {
 		this.missionId = missionId;
 	}
 
 	/**
 	 * @param missionName the missionName to set
 	 */
-	public void setMissionName(final String missionName) {
+	public void setMissionName(String missionName) {
 		this.missionName = missionName;
 	}
 
 	/**
 	 * @param missionStartDate the missionStartDate to set
 	 */
-	public void setMissionStartDate(final String missionStartDate) {
+	public void setMissionStartDate(String missionStartDate) {
 		this.missionStartDate = missionStartDate;
 	}
 
 	/**
 	 * @param missionEndDate the missionEndDate to set
 	 */
-	public void setMissionEndDate(final String missionEndDate) {
+	public void setMissionEndDate(String missionEndDate) {
 		this.missionEndDate = missionEndDate;
 	}
 
 	/**
 	 * @param missionDescription the missionDescription to set
 	 */
-	public void setMissionDescription(final String missionDescription) {
+	public void setMissionDescription(String missionDescription) {
 		this.missionDescription = missionDescription;
 	}
 
 	/**
 	 * @param missionType the missionType to set
 	 */
-	public void setMissionType(final String missionType) {
+	public void setMissionType(String missionType) {
 		this.missionType = missionType;
 	}
 
 	/**
 	 * @param missionAssignedTo the missionAssignedTo to set
 	 */
-	public void setMissionAssignedTo(final EmployeeDo missionAssignedTo) {
+	public void setMissionAssignedTo(EmployeeDo missionAssignedTo) {
 		this.missionAssignedTo = missionAssignedTo;
 	}
 
 	/**
 	 * @param missionIssuedBy the missionIssuedBy to set
 	 */
-	public void setMissionIssuedBy(final DepartmentDo missionIssuedBy) {
+	public void setMissionIssuedBy(DepartmentDo missionIssuedBy) {
 		this.missionIssuedBy = missionIssuedBy;
 	}
 
