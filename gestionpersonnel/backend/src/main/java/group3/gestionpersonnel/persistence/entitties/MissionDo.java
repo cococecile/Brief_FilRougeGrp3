@@ -34,7 +34,7 @@ public class MissionDo {
 	private String missionStartDate;
 
 	@Column(name = "mission_end_date")
-	private Date missionEndDate;
+	private String missionEndDate;
 
 	@Column(name = "mission_description")
 	private String missionDescription;
@@ -90,7 +90,7 @@ public class MissionDo {
 	/**
 	 * @return the missionEndDate
 	 */
-	public Date getMissionEndDate() {
+	public String getMissionEndDate() {
 		return missionEndDate;
 	}
 
@@ -147,7 +147,7 @@ public class MissionDo {
 	/**
 	 * @param missionEndDate the missionEndDate to set
 	 */
-	public void setMissionEndDate(final Date missionEndDate) {
+	public void setMissionEndDate(final String missionEndDate) {
 		this.missionEndDate = missionEndDate;
 	}
 

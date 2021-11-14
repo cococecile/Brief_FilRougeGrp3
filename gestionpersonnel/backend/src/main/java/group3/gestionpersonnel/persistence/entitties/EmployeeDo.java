@@ -40,6 +40,7 @@ public class EmployeeDo {
 		@JoinColumn(name="fk_employee_department", nullable = false)
 		private DepartmentDo employeeDepartment;
 		
+		public EmployeeDo(){}
 		
 		public EmployeeDo(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
 				String employeePosition, ManagerDo employeeManagedBy, MissionDo employeeMission, DepartmentDo employeeDepartment) {

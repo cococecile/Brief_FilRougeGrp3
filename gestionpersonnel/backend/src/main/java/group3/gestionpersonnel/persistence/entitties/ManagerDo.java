@@ -22,7 +22,7 @@ public class ManagerDo {
 	@Column(name="manager_email")
 	private String managerEmail;
 	
-	@OneToOne( cascade = CascadeType.PERSIST )
+	@OneToOne
 	@JoinColumn(name="fk_manager_department")
 	private DepartmentDo managerDepartment;
 	
