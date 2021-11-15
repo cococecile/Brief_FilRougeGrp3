@@ -1,3 +1,69 @@
 <a class="dropdown-item" routerLink="/">Page Accueil</a>
 
 <h1>Liste Employés</h1>
+<div class="list row">
+    <div class="col-md-6">
+        <h4>Employees List</h4>
+        <ul class="list-group">
+            <li
+                    class="list-group-item"
+                    *ngFor="let employee of employees; let i = index"
+                    [class.active]="i == currentIndex"
+                    (click)="setSelected(employee, i)">
+
+                {{ <employee class="firsname"></employee> }}
+            </li>
+        </ul>
+
+        <div *ngIf="!employeeFirstName || employeeFirstName.length == 0">
+            List is empty <a href="/form">add new Employee</a>
+        </div>
+
+        <a *ngIf="employees && employees.length > 0" class="btn btn-link" routerLink="/form">
+            Add new Employee
+        </a>
+    </div>
+    <div class="col-md-6">
+        <div *ngIf="selected">
+            <h4>Details</h4>
+            <div>
+                <label><strong>Firsname:</strong></label> {{ <selected class="employeeFirstName"></selected> }}
+            </div>
+            <div>
+                <label><strong>Lastename:</strong></label> {{ <selected class="employeeLastName"></selected> }}
+                
+            </div>
+            <div>
+                <label><strong>Mail:</strong></label> {{ <selected class="employeeMail"></selected> }}
+            </div>
+            <div>
+                <label><strong>Position:</strong></label> {{ <selected class="employeePosition"></selected> }}
+            </div>
+            
+
+            <a class="btn btn-sm btn-secondary mr-2" routerLink="/form/{{ selected.id }}">
+                Edit
+            </a>
+
+            <button class="btn btn-sm btn-danger mr-2" (click)="deleteEmployee()">
+                Delete
+            </button>
+
+            <button
+                    class="btn btn-sm btn-warning mr-2"
+                    *ngIf="selected.id && selected.published"
+                    (click)="updateEmployee(false)">
+                UnPublish
+            </button>
+            <button
+                    *ngIf="selected.id && !selected.published"
+                    class="btn btn-sm btn-warning mr-2"
+                    (click)="updateEmployee(true)">
+                Publish
+            </button>
+        </div>
+
+       
+    </div>
+</div>
+
