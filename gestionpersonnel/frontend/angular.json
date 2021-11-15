@@ -123,13 +123,8 @@
       }
     }
   },
-<<<<<<< HEAD
-  "defaultProject": "bootstrap4Dylut"
-}
-=======
   "defaultProject": "frontend",
   "cli": {
     "analytics": false
   }
 }
->>>>>>> 357e0acca7d22c24d0e4b0666068d404d00191aa
