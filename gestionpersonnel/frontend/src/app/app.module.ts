@@ -15,6 +15,7 @@ import { DepartmentListComponent } from './components/department/department-list
 import { MissionDetailComponent } from './components/mission/mission-detail/mission-detail.component';
 import { MissionFormComponent } from './components/mission/mission-form/mission-form.component';
 import { MissionListComponent } from './components/mission/mission-list/mission-list.component';
+import { ManagerFormComponent } from './components/manager/manager-form/manager-form.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { MissionListComponent } from './components/mission/mission-list/mission-
     MissionDetailComponent,
     MissionFormComponent,
     MissionListComponent,
+    ManagerFormComponent,
   ],
   imports: [
     BrowserModule,
