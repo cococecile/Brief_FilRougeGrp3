@@ -17,6 +17,13 @@ import group3.gestionpersonnel.persistence.dao.IManagerDao;
 import group3.gestionpersonnel.persistence.entitties.*;
 import group3.gestionpersonnel.presentation.model.*;
 
+/**
+ * This service manages business logic for CRUD operations concerning
+ * {@link group3.gestionpersonnel.persistence.entitties.ManagerDo
+ * Managers} Performs transactions between Persistence and Model layers.
+ * 
+ * @author Alexandra HALL
+ */
 @Service
 public class ManagerServiceImpl implements IManagerService {
 	
@@ -24,6 +31,9 @@ public class ManagerServiceImpl implements IManagerService {
 	private IManagerDao managerDao;
 	private ModelMapper mapper = PreventRecursiveMapper.getManagerMapper();
 	
+	/**
+	 * This method implements the getAllManagers() method from {@link group3.gestionpersonnel.business.services.interfaces.IManagerService IManagerService}
+	 */
 	@Override
 	public List<ManagerDto> getAllManagers() {
 		List<ManagerDo> listFromDatabase = managerDao.findAll();
@@ -37,6 +47,9 @@ public class ManagerServiceImpl implements IManagerService {
         return convertedList;
     }
 	
+	/**
+	 * This method implements the getManagerById(Long managerId) method from {@link group3.gestionpersonnel.business.services.interfaces.IManagerService IManagerService}
+	 */
 	@Override
 	public ManagerDto getManagerById(Long managerId) {
 		Optional<ManagerDo> optManagerDo = managerDao.findById(managerId);
@@ -49,6 +62,9 @@ public class ManagerServiceImpl implements IManagerService {
                 "No resource matching provided id has been found. Please provide valid id and retry");
 	}
 	
+	/**
+	 * This method implements the saveManager(ManagerDto managerToCreate) method from {@link group3.gestionpersonnel.business.services.interfaces.IManagerService IManagerService}
+	 */
 	@Override
 	public void saveManager(ManagerDto managerToCreate) {
 		if (managerToCreate != null
@@ -63,6 +79,9 @@ public class ManagerServiceImpl implements IManagerService {
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");
         }
 	
+	/**
+	 * This method implements the deleteManagerById(Long managerId) method from {@link group3.gestionpersonnel.business.services.interfaces.IManagerService IManagerService}
+	 */
 	@Override
 	public void deleteManagerById(Long managerId) {
 		if (managerId != null && managerId != 0) {

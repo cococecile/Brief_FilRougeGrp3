@@ -17,6 +17,13 @@ import group3.gestionpersonnel.persistence.dao.IEmployeeDao;
 import group3.gestionpersonnel.persistence.entitties.*;
 import group3.gestionpersonnel.presentation.model.*;
 
+/**
+ * This service manages business logic for CRUD operations concerning
+ * {@link group3.gestionpersonnel.persistence.entitties.EmployeeDo
+ * Employees} Performs transactions between Persistence and Model layers.
+ * 
+ * @author Alexandra HALL
+ */
 @Service
 public class EmployeeServiceImpl implements IEmployeeService {
 	
@@ -24,6 +31,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	IEmployeeDao employeeDao;
 	private ModelMapper mapper = PreventRecursiveMapper.getEmployeeMapper();
 	
+	/**
+	 * This method implements the getAllEmployees() method from {@link group3.gestionpersonnel.business.services.interfaces.IEmployeeService IEmployeeService}
+	 */
 	public List<EmployeeDto> getAllEmployees() {
 		List<EmployeeDo> listFromDatabase = employeeDao.findAll();
 		List<EmployeeDto> convertedList = new ArrayList<EmployeeDto>();
@@ -36,6 +46,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
         return convertedList;
     }
 
+	/**
+	 * This method implements the saveEmployee(EmployeeDto employeeToCreate) method from {@link group3.gestionpersonnel.business.services.interfaces.IEmployeeService IEmployeeService}
+	 */
 	@Override
 	public void saveEmployee(EmployeeDto employeeToCreate) {
 		if (employeeToCreate != null
@@ -51,6 +64,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");
         }
 
+	/**
+	 * This method implements the getEmployeeById(Long employeeId) method from {@link group3.gestionpersonnel.business.services.interfaces.IEmployeeService IEmployeeService}
+	 */
 	@Override
 	public EmployeeDto getEmployeeById(Long employeeId) {
 		Optional<EmployeeDo> optEmployeeDo = employeeDao.findById(employeeId);
@@ -63,6 +79,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
                 "No resource matching provided id has been found. Please provide valid id and retry");
 	}
 
+	/**
+	 * This method implements the deleteEmployeeById(Long employeeId) method from {@link group3.gestionpersonnel.business.services.interfaces.IEmployeeService IEmployeeService}
+	 */
 	@Override
 	public void deleteEmployeeById(Long employeeId) {
 		if (employeeId != null && employeeId != 0) {

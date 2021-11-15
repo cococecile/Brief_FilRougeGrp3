@@ -16,7 +16,7 @@ public interface IDepartmentService {
     /**
      * Maps a {@link group3.gestionpersonnel.presentation.model.DepartmentDto
      * DepartmentDto} to a
-     * {@link group3.gestionpersonnel.persistence.entitties.MissionDo DepartmentDo} and
+     * {@link group3.gestionpersonnel.persistence.entitties.DepartmentDo DepartmentDo} and
      * forwards it to {@link group3.gestionpersonnel.persistence.dao.IDepartmentDao
      * IDepartmentDao} for database insertion.
      */

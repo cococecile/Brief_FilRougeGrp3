@@ -3,7 +3,7 @@ package group3.gestionpersonnel.presentation.model;
 import java.util.List;
 
 /**
- * This class represents a Department Data Transfert Object
+ * This class represents a Department Data Transfer Object
  * @see group3.gestionpersonnel.entitties.DepartmentDo
  * @author Caroline / Group3
  *

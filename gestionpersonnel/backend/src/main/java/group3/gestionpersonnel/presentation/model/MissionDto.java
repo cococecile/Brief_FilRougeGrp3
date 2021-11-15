@@ -4,7 +4,7 @@
 package group3.gestionpersonnel.presentation.model;
 
 /**
- * This class represents a Mission Data Transfert object.
+ * This class represents a Mission Data Transfer object.
  * 
  * @See {@link group3.gestionpersonnel.persistence.entitties.MissionDo MissionDo}
  * @author Caroline (Group3)
