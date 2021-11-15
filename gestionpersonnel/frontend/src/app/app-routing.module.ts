@@ -18,55 +18,31 @@ import { MissionListComponent } from './components/mission/mission-list/mission-
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'landing', component: LandingComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
 
-  { path: '', component: DepartmentDetailComponent },
   { path: 'department-detail', component: DepartmentDetailComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: DepartmentFormComponent },
   { path: 'department-form', component: DepartmentFormComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: DepartmentListComponent },
   { path: 'department-list', component: DepartmentListComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: EmployeeDetailComponent },
   { path: 'employee-detail', component: EmployeeDetailComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: EmployeeFormComponent },
   { path: 'employee-form', component: EmployeeFormComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: EmployeeListComponent },
   { path: 'employee-list', component: EmployeeListComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: ManagerDetailComponent },
   { path: 'manager-detail', component: ManagerDetailComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: ManagerFormComponent },
   { path: 'manager-form', component: ManagerFormComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: ManagerListComponent },
   { path: 'manager-list', component: ManagerListComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full' },
   
-  { path: '', component: MissionDetailComponent },
   { path: 'mission-detail', component: MissionDetailComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: MissionFormComponent },
   { path: 'mission-form', component: MissionFormComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
-  { path: '', component: MissionListComponent },
   { path: 'mission-list', component: MissionListComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full' },
 
 ];
 
