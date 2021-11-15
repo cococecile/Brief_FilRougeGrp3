@@ -1,16 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { EmployeeListComponent } from './components/employee/employee-list/employee-list.component';
+import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
+import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
+import { ManagerListComponent } from './components/manager/manager-list/manager-list.component';
+import { ManagerDetailComponent } from './components/manager/manager-detail/manager-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent
+    LandingComponent,
+    EmployeeListComponent,
+    EmployeeDetailComponent,
+    EmployeeFormComponent,
+    ManagerListComponent,
+    ManagerDetailComponent
   ],
   imports: [
     BrowserModule,
