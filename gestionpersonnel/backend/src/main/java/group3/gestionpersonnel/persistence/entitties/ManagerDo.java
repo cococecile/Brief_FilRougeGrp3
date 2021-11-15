@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="manager")
 public class ManagerDo {
@@ -22,15 +25,17 @@ public class ManagerDo {
 	@Column(name="manager_email")
 	private String managerEmail;
 	
-	@OneToOne( cascade = CascadeType.PERSIST )
-	@Column(name="fk_manager_department")
-    @JoinColumn( name="department_id")
+	@OneToOne
+	@JoinColumn(name="fk_manager_department")
+	@JsonBackReference
 	private DepartmentDo managerDepartment;
 	
 	
-	@OneToMany( targetEntity=EmployeeDo.class, mappedBy="employeeManagedBy" )
+	@OneToMany( targetEntity=EmployeeDo.class, mappedBy="employeeManagedBy", fetch = FetchType.LAZY )
+	@JsonManagedReference
 	private List<EmployeeDo> managedEmployees;
 	
+	public ManagerDo(){}
 	
 	public ManagerDo(Long managerId, String managerFirstName, String managerLastName, String managerEmail,
 			DepartmentDo managerDepartment, List<EmployeeDo> managedEmployees) {
@@ -101,6 +106,13 @@ public class ManagerDo {
 
 	public void setManagedEmployees(List<EmployeeDo> managedEmployees) {
 		this.managedEmployees = managedEmployees;
+	}
+
+	@Override
+	public String toString() {
+		return "ManagerDo [managedEmployees=" + managedEmployees + ", managerDepartment=" + managerDepartment
+				+ ", managerEmail=" + managerEmail + ", managerFirstName=" + managerFirstName + ", managerId="
+				+ managerId + ", managerLastName=" + managerLastName + "]";
 	}
 	
 	

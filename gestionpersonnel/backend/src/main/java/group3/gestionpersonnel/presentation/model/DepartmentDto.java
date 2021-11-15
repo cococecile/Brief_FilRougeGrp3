@@ -33,35 +33,35 @@ public class DepartmentDto {
 	/**
 	 * @return the departmentId
 	 */
-	public final Long getDepartmentId() {
+	public Long getDepartmentId() {
 		return departmentId;
 	}
 
 	/**
 	 * @return the departmentName
 	 */
-	public final String getDepartmentName() {
+	public String getDepartmentName() {
 		return departmentName;
 	}
 
 	/**
 	 * @return the departmentEmployees
 	 */
-	public final List<EmployeeDto> getDepartmentEmployees() {
+	public List<EmployeeDto> getDepartmentEmployees() {
 		return departmentEmployees;
 	}
 
 	/**
 	 * @return the departmentMissions
 	 */
-	public final List<MissionDto> getDepartmentMissions() {
+	public List<MissionDto> getDepartmentMissions() {
 		return departmentMissions;
 	}
 
 	/**
 	 * @return the departmentChief
 	 */
-	public final ManagerDto getDepartmentChief() {
+	public ManagerDto getDepartmentChief() {
 		return departmentChief;
 	}
 
@@ -69,35 +69,35 @@ public class DepartmentDto {
 	 * @param departmentId the departmentId to set
 	 * Rather use the constructor with ID param, if possible.
 	 */
-	public final void setDepartmentId(final Long departmentId) {
+	public void setDepartmentId(final Long departmentId) {
 		this.departmentId = departmentId;
 	}
 
 	/**
 	 * @param departmentName the departmentName to set
 	 */
-	public final void setDepartmentName(final String departmentName) {
+	public void setDepartmentName(final String departmentName) {
 		this.departmentName = departmentName;
 	}
 
 	/**
 	 * @param departmentEmployees the departmentEmployees to set
 	 */
-	public final void setDepartmentEmployees(final List<EmployeeDto> departmentEmployees) {
+	public void setDepartmentEmployees(final List<EmployeeDto> departmentEmployees) {
 		this.departmentEmployees = departmentEmployees;
 	}
 
 	/**
 	 * @param departmentMissions the departmentMissions to set
 	 */
-	public final void setDepartmentMissions(final List<MissionDto> departmentMissions) {
+	public void setDepartmentMissions(final List<MissionDto> departmentMissions) {
 		this.departmentMissions = departmentMissions;
 	}
 
 	/**
 	 * @param departmentChief the departmentChief to set
 	 */
-	public final void setDepartmentChief(final ManagerDto departmentChief) {
+	public void setDepartmentChief(final ManagerDto departmentChief) {
 		this.departmentChief = departmentChief;
 	} 
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,14 +33,16 @@ public class DepartmentDo {
 	@Column(name="department_name")
 	private String departmentName;
 	
-	@OneToMany(mappedBy="employeeDepartment")
+	@OneToMany(mappedBy="employeeDepartment", fetch = FetchType.LAZY)
+	@JsonManagedReference	
 	private List<EmployeeDo> departmentEmployees;
 	
-	@OneToMany(mappedBy="missionIssuedBy")
+	@OneToMany(mappedBy="missionIssuedBy", fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private List<MissionDo>departmentMissionPool;
 	
-	@OneToOne (mappedBy="managerDepartment")
+	@OneToOne(mappedBy="managerDepartment")
+	@JsonManagedReference
 	private ManagerDo departmentChief;
 	
 	/**
@@ -59,71 +62,71 @@ public class DepartmentDo {
 	/**
 	 * @return the departmentId
 	 */
-	public final Long getDepartmentId() {
+	public Long getDepartmentId() {
 		return departmentId;
 	}
 
 	/**
 	 * @return the departmentName
 	 */
-	public final String getDepartmentName() {
+	public String getDepartmentName() {
 		return departmentName;
 	}
 
 	/**
 	 * @return the departmentEmployees
 	 */
-	public final List<EmployeeDo> getDepartmentEmployees() {
+	public List<EmployeeDo> getDepartmentEmployees() {
 		return departmentEmployees;
 	}
 
 	/**
 	 * @return the departmentMissionPool
 	 */
-	public final List<MissionDo> getDepartmentMissionPool() {
+	public List<MissionDo> getDepartmentMissionPool() {
 		return departmentMissionPool;
 	}
 
 	/**
 	 * @return the departmentChief
 	 */
-	public final ManagerDo getDepartmentChief() {
+	public ManagerDo getDepartmentChief() {
 		return departmentChief;
 	}
 
 	/**
 	 * @param departmentId the departmentId to set
-	 * Rather use constructor with id param than this setter.
+	 * Rather use constructor with id param than this setter. 
 	 */
-	public final void setDepartmentId(final Long departmentId) {
+	public void setDepartmentId(final Long departmentId) {
 		this.departmentId = departmentId;
 	}
 
 	/**
 	 * @param departmentName the departmentName to set
 	 */
-	public final void setDepartmentName(final String departmentName) {
+	public void setDepartmentName(final String departmentName) {
 		this.departmentName = departmentName;
 	}
 
 	/**
 	 * @param departmentEmployees the departmentEmployees to set
 	 */
-	public final void setDepartmentEmployees(final List<EmployeeDo> departmentEmployees) {
+	public void setDepartmentEmployees(final List<EmployeeDo> departmentEmployees) {
 		this.departmentEmployees = departmentEmployees;
 	}
 
 	/**
 	 * @param departmentMissionPool the departmentMissionPool to set
 	 */
-	public final void setDepartmentMissionPool(final List<MissionDo> departmentMissionPool) {
+	public void setDepartmentMissionPool(final List<MissionDo> departmentMissionPool) {
 		this.departmentMissionPool = departmentMissionPool;
 	}
 
 	/**
 	 * @param departmentChief the departmentChief to set
 	 */
-	public final void setDepartmentChief(final ManagerDo departmentChief) {
+	public void setDepartmentChief(final ManagerDo departmentChief) {
 		this.departmentChief = departmentChief;
 	}
 

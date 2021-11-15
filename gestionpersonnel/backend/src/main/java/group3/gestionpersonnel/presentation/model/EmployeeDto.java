@@ -10,7 +10,7 @@ public class EmployeeDto {
 	private String employeePosition;
 	private ManagerDto employeeManagedBy;
 	private MissionDto employeeMission;
-	private EmployeeDto employeeDepartment;
+	private DepartmentDto employeeDepartment;
 	
 	
 	public EmployeeDto() {
@@ -24,7 +24,7 @@ public class EmployeeDto {
 
 	public EmployeeDto(Long employeeId, String employeeFirstName, String employeeLastName, String employeeMail,
 			String employeePosition, ManagerDto employeeManagedBy, MissionDto employeeMission,
-			EmployeeDto employeeDepartment) {
+			DepartmentDto employeeDepartment) {
 		super();
 		this.employeeId = employeeId;
 		this.employeeFirstName = employeeFirstName;
@@ -92,11 +92,11 @@ public class EmployeeDto {
 		this.employeeMission = employeeMission;
 	}
 
-	public EmployeeDto getEmployeeDepartment() {
+	public DepartmentDto getEmployeeDepartment() {
 		return employeeDepartment;
 	}
 
-	public void setEmployeeDepartment(EmployeeDto employeeDepartment) {
+	public void setEmployeeDepartment(DepartmentDto employeeDepartment) {
 		this.employeeDepartment = employeeDepartment;
 	}
 
