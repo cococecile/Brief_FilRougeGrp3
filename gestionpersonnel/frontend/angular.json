@@ -123,13 +123,8 @@
       }
     }
   },
-<<<<<<< HEAD
   "defaultProject": "frontend",
   "cli": {
     "analytics": false
   }
 }
-=======
-  "defaultProject": "bootstrap4Dylut"
-}
->>>>>>> feat-JustineFront
