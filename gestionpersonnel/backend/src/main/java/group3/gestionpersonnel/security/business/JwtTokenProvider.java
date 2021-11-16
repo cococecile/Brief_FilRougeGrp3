@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import group3.gestionpersonnel.security.presentation.UserLoginRequest;
+import group3.gestionpersonnel.security.presentation.UserPrincipal;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -46,13 +46,13 @@ public class JwtTokenProvider {
 	     */
 	    public String generateToken(Authentication authentication) {
 
-	        UserLoginRequest userLoginRequest = (UserLoginRequest) authentication.getPrincipal();
+	        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
 
 	        Date now = new Date();
 	        Date expiryDate = new Date(now.getTime() + this.jwtExpirationInMs);
 
 	        return Jwts.builder()
-	                .setSubject(userLoginRequest.getUserName())
+	                .setSubject(userPrincipal.getUserName())
 	                .setIssuedAt(new Date())
 	                .setExpiration(expiryDate)
 	                .signWith(SignatureAlgorithm.HS512, this.jwtSecret)

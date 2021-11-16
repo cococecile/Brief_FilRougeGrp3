@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import group3.gestionpersonnel.persistence.entitties.UserDo;
 import group3.gestionpersonnel.security.persistence.IUserDao;
-import group3.gestionpersonnel.security.presentation.UserLoginRequest;
+import group3.gestionpersonnel.security.presentation.UserPrincipal;
 
 @Service
 public class AuthService implements UserDetailsService {
@@ -23,13 +23,13 @@ public class AuthService implements UserDetailsService {
 	 */
 	@Transactional
 	@Override
-	public UserLoginRequest loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDo userDo = this.userDao.findByUserName(username)
                 .orElseThrow(() ->
                 new UsernameNotFoundException("User not found with username : " + username)
                         );
 
-        return UserLoginRequest.create(userDo);
+        return UserPrincipal.create(userDo);
 	}
 	
 	/**
@@ -41,7 +41,7 @@ public class AuthService implements UserDetailsService {
                 () -> new UsernameNotFoundException("User not found with id : " + id)
                 );
 
-        return UserLoginRequest.create(userDo);
+        return UserPrincipal.create(userDo);
     }
 
 }

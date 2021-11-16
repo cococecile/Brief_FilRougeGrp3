@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import group3.gestionpersonnel.persistence.entitties.UserDo;
 
 
-public class UserLoginRequest implements UserDetails {
+public class UserPrincipal implements UserDetails {
 	
 	/**
 	 * 
@@ -25,7 +25,7 @@ public class UserLoginRequest implements UserDetails {
     
     private Collection<? extends GrantedAuthority> authorities;
     
-    public UserLoginRequest() {
+    public UserPrincipal() {
 		super();
 	}
 
@@ -92,11 +92,11 @@ public class UserLoginRequest implements UserDetails {
 	 * @param userDo = the object User created from the username and password the method is being sent
 	 * @return a Login Request with these parameters
 	 */
-	public static UserLoginRequest create(UserDo userDo) {
-        UserLoginRequest userLoginRequest = new UserLoginRequest();
-        userLoginRequest.setUserName(userDo.getUserName());
-        userLoginRequest.setUserPassword(userDo.getUserPassword());
-        return userLoginRequest;
+	public static UserPrincipal create(UserDo userDo) {
+        UserPrincipal userPrincipal = new UserPrincipal();
+        userPrincipal.setUserName(userDo.getUserName());
+        userPrincipal.setUserPassword(userDo.getUserPassword());
+        return userPrincipal;
     }
 
 }

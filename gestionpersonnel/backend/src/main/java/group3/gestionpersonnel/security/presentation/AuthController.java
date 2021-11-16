@@ -34,19 +34,19 @@ public class AuthController {
     JwtTokenProvider tokenProvider;
     
     @PostMapping("/signin")
-    public ResponseEntity<?> authenticateUser(@Valid @RequestBody UserLoginRequest userLoginRequest) {
+    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
         Authentication authentication = this.authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
-                        userLoginRequest.getUserName(),
-                        userLoginRequest.getPassword()
+                		loginRequest.getUserName(),
+                		loginRequest.getPassword()
                         )
                 );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = this.tokenProvider.generateToken(authentication);
-       return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, this.userDao.findByUserName(userLoginRequest.getUserName())));
+       return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, this.userDao.findByUserName(loginRequest.getUserName())));
     }
 
 
