@@ -34,12 +34,13 @@ public class DepartmentServiceImpl implements IDepartmentService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MissionServiceImpl.class);
 
     @Override
-    public void saveDepartment(DepartmentDto departmentToCreate) {
+    public DepartmentDto saveDepartment(DepartmentDto departmentToCreate) {
         LOGGER.info("--- DEPARTMENT SERVICE SAVE METHOD ---");
         if (departmentToCreate != null && NullChecker.isNotNullAndNotEmpty(departmentToCreate.getDepartmentName())) {
             DepartmentDo departmentConvertedForDatabase = mapper.map(departmentToCreate, DepartmentDo.class);
-            departmentDao.save(departmentConvertedForDatabase);
-            return;
+            Long createdDepartmentId = departmentDao.save(departmentConvertedForDatabase).getDepartmentId();
+            departmentToCreate.setDepartmentId(createdDepartmentId);
+            return departmentToCreate;
         }
         throw new NullBodyException(
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");

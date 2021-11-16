@@ -13,10 +13,7 @@ const baseUrl = 'http://localhost:4200/api/employees';
 
 export class EmployeeService {
 
-  
   constructor(private http: HttpClient) { }
-
-
 
   /**
    * Get the list of all Employee
@@ -26,7 +23,6 @@ export class EmployeeService {
    list(): Observable<any> {
     return this.http.get(baseUrl);
   }
-
  
   /**
    * Find a Employee by id
