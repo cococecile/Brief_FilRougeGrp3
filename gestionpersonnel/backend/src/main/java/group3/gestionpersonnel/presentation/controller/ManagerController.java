@@ -69,8 +69,8 @@ public class ManagerController {
      */
 	@PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveManager(@RequestBody ManagerDto managerToCreate) {
-        managerService.saveManager(managerToCreate);
+    public ManagerDto saveManager(@RequestBody ManagerDto managerToCreate) {
+       return managerService.saveManager(managerToCreate);
     }
 	
 	/**

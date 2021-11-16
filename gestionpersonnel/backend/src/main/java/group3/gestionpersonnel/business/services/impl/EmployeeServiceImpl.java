@@ -50,15 +50,16 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	 * This method implements the saveEmployee(EmployeeDto employeeToCreate) method from {@link group3.gestionpersonnel.business.services.interfaces.IEmployeeService IEmployeeService}
 	 */
 	@Override
-	public void saveEmployee(EmployeeDto employeeToCreate) {
+	public EmployeeDto saveEmployee(EmployeeDto employeeToCreate) {
 		if (employeeToCreate != null
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeFirstName())
 				&& NullChecker.isNotNullAndNotEmpty(employeeToCreate.getEmployeeLastName()))
 		 {
             EmployeeDo employeeConvertedForDatabase = mapper.map(employeeToCreate, EmployeeDo.class);
             System.out.println("EMPLOYEE : "+employeeConvertedForDatabase.toString());
-            employeeDao.save(employeeConvertedForDatabase);
-            return;
+            Long createdEmployeeId = employeeDao.save(employeeConvertedForDatabase).getEmployeeId();
+            employeeToCreate.setEmployeeId(createdEmployeeId);
+			return employeeToCreate;
         }
         throw new NullBodyException(
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");

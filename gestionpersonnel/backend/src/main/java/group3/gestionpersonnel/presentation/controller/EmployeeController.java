@@ -71,8 +71,8 @@ public class EmployeeController {
      */
 	@PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveEmployee(@RequestBody EmployeeDto employeeToCreate) {
-        employeeService.saveEmployee(employeeToCreate);
+    public EmployeeDto saveEmployee(@RequestBody EmployeeDto employeeToCreate) {
+       return employeeService.saveEmployee(employeeToCreate);
     }
 	
 	/**

@@ -21,8 +21,9 @@ public interface IMissionService {
      * {@link group3.gestionpersonnel.persistence.entitties.MissionDo MissionDo} and
      * forwards it to {@link group3.gestionpersonnel.persistence.dao.IMissionDao
      * IMissionDao} for database insertion.
+     * @return 
      */
-    void saveMission(MissionDto missionToCreate);
+    MissionDto saveMission(MissionDto missionToCreate);
 
     /**
      * Calls {@link group3.gestionpersonnel.persistence.dao.IMissionDao IMissionDao}
