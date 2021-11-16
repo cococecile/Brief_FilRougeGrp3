@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { EmployeeDto } from 'src/app/model/employee.model';
+import { Employee } from 'src/app/model/employee.model';
 import { EmployeeService } from 'src/app/services/employee.service';
 
 
@@ -11,7 +11,7 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
 
-  employees?:EmployeeDto[];
+  employees?:Employee[];
   selected?: EmployeeListComponent;
   currentIndex: number = -1;
  
