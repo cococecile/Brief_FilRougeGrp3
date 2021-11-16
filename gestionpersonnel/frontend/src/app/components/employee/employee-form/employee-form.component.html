@@ -1,78 +1,83 @@
 <a class="dropdown-item" routerLink="/">Page Accueil</a>
+<section class="employee-form" style="width: 50rem; padding:20px;">
 
-<h1>Créer un employé</h1>
-<form>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">FirstName</label>
-      <input type="text" class="form-control" id="inputFirstname" placeholder="FirstName">
+  <h1>Créer un employé</h1>
+  <form>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4" style="font-weight: bold;">Nom</label>
+        <input type="text" class="form-control" id="inputFirstname" placeholder="Nom">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4" style="font-weight: bold;">Prénom</label>
+        <input type="text" class="form-control" id="inputLastname" placeholder="Prénom">
+      </div>
+    
     </div>
-    <div class="form-group col-md-6">
-      <label for="inputPassword4">LastName</label>
-      <input type="text" class="form-control" id="inputLastname" placeholder="LastName">
+    <div class="form-group">
+      <label for="inputAddress" style="font-weight: bold;">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
     </div>
-  
-  </div>
-  <div class="form-group">
-    <label for="inputAddress">EMail</label>
-    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-  </div>
 
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Status</label>
-    <input type="text" class="form-control" id="inputLastname" placeholder="Status">
-  </div>
+    <div class="form-group col-md-4">
+      <label for="inputPassword4" style="font-weight: bold;">Statut</label>
+      <input type="text" class="form-control" id="inputLastname" placeholder="Statut">
+    </div>
 
 
-  <div class="form-group col-md-4">
-    <label for="inputState">Departement</label>
-    <select id="inputState" class="form-control">
-      <option selected></option>
-      <option value="">--Please choose an option--</option>
-      <option value="dog">departmentId/name</option>
-      <option value="cat">departmentId/name</option>
-      <option value="hamster">departmentId/name</option>
-      <option value="parrot">departmentId/name</option>
-      <option value="spider">departmentId/name</option>
-      
-    </select>
-  </div>
-
-  <div class="form-group col-md-4">
-    <label for="inputState">Manager</label>
-    <select id="inputState" class="form-control">
-      <option selected></option>
-      <option value="">--Please choose an option--</option>
-      <option value="dog">managertId/name</option>
-      <option value="cat">managerId/name</option>
-      <option value="hamster">managerId/name</option>
-      <option value="parrot">managerId/name</option>
-      <option value="spider">managerId/name</option>
-      
-    </select>
-  </div>
-
-  <div class="form-group col-md-4">
-    <label for="inputState">Mission</label>
-    <select id="inputState" class="form-control">
-      <option selected></option>
-      <option value="">--Please choose an option--</option>
-      <option value="dog">missionId/name</option>
-      <option value="cat">missionId/name</option>
-      <option value="hamster">missionId/name</option>
-      <option value="parrot">managerId/name</option>
-      <option value="spider">managerId/name</option>
+    <div class="form-group col-md-4">
+      <label for="inputState" style="font-weight: bold;">Departement</label>
+      <p><i>dans lequel travaille l'employé</i></p>
+      <select id="inputState" class="form-control">
+        <option selected></option>
+        <option value="">--Sélectionner--</option>
+        <option value="dog">departmentId/name</option>
+        <option value="cat">departmentId/name</option>
+        <option value="hamster">departmentId/name</option>
+        <option value="parrot">departmentId/name</option>
+        <option value="spider">departmentId/name</option>
+        
       </select>
-       
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Mission attribuée
-      </label>
     </div>
-</div>
-<button type="submit" class="btn btn-dark">Sign in</button>
-  </div>
 
-</form>
+    <div class="form-group col-md-4">
+      <label for="inputState" style="font-weight: bold;">Manager</label>
+      <p><i>L'employé est sous la direction de ce référent</i></p>
+      <select id="inputState" class="form-control">
+        <option selected></option>
+        <option value="">--Sélectionner--</option>
+        <option value="dog">managertId/name</option>
+        <option value="cat">managerId/name</option>
+        <option value="hamster">managerId/name</option>
+        <option value="parrot">managerId/name</option>
+        <option value="spider">managerId/name</option>
+        
+      </select>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label for="inputState" style="font-weight: bold;">Mission</label>
+      <p><i>La mission confiée à l'employé</i></p>
+      <select id="inputState" class="form-control">
+        <option selected></option>
+        <option value="">--Sélectionne--</option>
+        <option value="dog">missionId/name</option>
+        <option value="cat">missionId/name</option>
+        <option value="hamster">missionId/name</option>
+        <option value="parrot">managerId/name</option>
+        <option value="spider">managerId/name</option>
+        </select>
+        
+    <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="gridCheck">
+        <label class="form-check-label" for="gridCheck">
+          Mission attribuée
+        </label>
+      </div>
+  </div>
+  <button type="submit" class="btn btn-dark">Sign in</button>
+    </div>
+
+  </form>
+</section>

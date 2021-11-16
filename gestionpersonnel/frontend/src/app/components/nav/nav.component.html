@@ -1,5 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">PERSONEL MANAGEMENT</a>
+    <a class="navbar-brand" style="color:blue; font-weight:bold;">
+      TABLEAU DE BORD            
+      <i style="font-weight:normal; color:rgb(11, 196, 20);">Gestion du personnel</i>
+      <div class="dropdown-divider"></div>
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,19 +13,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" routerLink="/">HOME <span class="sr-only">(current)</span></a>
+          <a class="nav-link" routerLink="/">ACCUEIL <span class="sr-only">(current)</span></a>
         </li>
        
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-           LIST
+           LISTES
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="employee-list">Employees</a>
+            <a class="dropdown-item" routerLink="employee-list">Employés</a>
             <a class="dropdown-item" routerLink="manager-list">Managers</a>
             <a class="dropdown-item" routerLink="mission-list">Missions</a>
-            <a class="dropdown-item" routerLink="department-list">Département</a>
+            <a class="dropdown-item" routerLink="department-list">Pôles</a>
             <div class="dropdown-divider"></div>
            
           </div>
@@ -28,23 +33,26 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-           CREATE
+          <button class="btn btn-success">Créer</button>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="employee-form">Employees</a>
-            <a class="dropdown-item" routerLink="manager-form">Managers</a>
-            <a class="dropdown-item" routerLink="mission-form">Missions</a>
-            <a class="dropdown-item" routerLink="department-form">Département</a>
+            <a class="dropdown-item" routerLink="employee-form">Employé</a>
+            <a class="dropdown-item" routerLink="manager-form">Manager</a>
+            <a class="dropdown-item" routerLink="mission-form">Mission</a>
+            <a class="dropdown-item" routerLink="department-form">Pôle</a>
             <div class="dropdown-divider"></div>
            
           </div>
         </li>
        
       </ul>
-      <!-- Bar search -->
+      <!-- module de connexion --> 
+      <button type="button" class="btn btn-primary">CONNEXION</button>
       <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <<button type="button" class="btn btn-dark" type="submit">Search</button>
       </form> -->
     </div>
+    <div class="dropdown-divider"></div>
+
   </nav>
