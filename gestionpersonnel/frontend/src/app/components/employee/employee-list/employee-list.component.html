@@ -49,17 +49,12 @@
                 Delete
             </button>
 
-            <button
-                    class="btn btn-sm btn-warning mr-2"
-                    *ngIf="selected.id && selected.published"
-                    (click)="updateEmployee(false)">
-                UnPublish
-            </button>
+            
             <button
                     *ngIf="selected.id && !selected.published"
                     class="btn btn-sm btn-warning mr-2"
-                    (click)="updateEmployee(true)">
-                Publish
+                    (click)="detailEmployee(true)">
+                Details
             </button>
         </div>
 
