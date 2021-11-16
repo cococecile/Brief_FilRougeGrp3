@@ -1,7 +1,6 @@
 package group3.gestionpersonnel.security.presentation;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
@@ -88,6 +87,11 @@ public class UserLoginRequest implements UserDetails {
 		return true;
 	}
 	
+	/**
+	 * This method creates a Login Request from the username and password it's given as parameters
+	 * @param userDo = the object User created from the username and password the method is being sent
+	 * @return a Login Request with these parameters
+	 */
 	public static UserLoginRequest create(UserDo userDo) {
         UserLoginRequest userLoginRequest = new UserLoginRequest();
         userLoginRequest.setUserName(userDo.getUserName());
