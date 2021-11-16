@@ -21,22 +21,6 @@ export class ManagerListComponent implements OnInit {
   managerMission: string ="";
   managerDepartement : string ='';
 
-  // managers = [
-  
-  //     {
-  //       id: "",
-  //       firsname: '',
-  //       lastname: '',
-  //       departement: {
-  //         name: '',
-  //         mission: {
-  //           name: '',
-  //         },
-  //       },
-        
-  //     },
-  // ]
-  
 
   constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
   }
