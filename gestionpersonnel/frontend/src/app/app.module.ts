@@ -18,6 +18,7 @@ import { MissionListComponent } from './components/mission/mission-list/mission-
 import { ManagerFormComponent } from './components/manager/manager-form/manager-form.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -37,14 +38,15 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
     MissionListComponent,
     ManagerFormComponent,
     NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    ],
     
-  ],
   providers: [],
   bootstrap: [AppComponent]
 })
