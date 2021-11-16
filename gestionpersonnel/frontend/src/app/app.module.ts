@@ -17,6 +17,7 @@ import { MissionFormComponent } from './components/mission/mission-form/mission-
 import { MissionListComponent } from './components/mission/mission-list/mission-list.component';
 import { ManagerFormComponent } from './components/manager/manager-form/manager-form.component';
 import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { NavComponent } from './components/nav/nav.component';
     MissionListComponent,
     ManagerFormComponent,
     NavComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
