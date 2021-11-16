@@ -66,14 +66,15 @@ public class ManagerServiceImpl implements IManagerService {
 	 * This method implements the saveManager(ManagerDto managerToCreate) method from {@link group3.gestionpersonnel.business.services.interfaces.IManagerService IManagerService}
 	 */
 	@Override
-	public void saveManager(ManagerDto managerToCreate) {
+	public ManagerDto saveManager(ManagerDto managerToCreate) {
 		if (managerToCreate != null
 				&& NullChecker.isNotNullAndNotEmpty(managerToCreate.getManagerFirstName())
 				&& NullChecker.isNotNullAndNotEmpty(managerToCreate.getManagerLastName()))
 		 {
             ManagerDo managerConvertedForDatabase = mapper.map(managerToCreate, ManagerDo.class);
-            managerDao.save(managerConvertedForDatabase);
-            return;
+            Long createdManagerId =  managerDao.save(managerConvertedForDatabase).getManagerId();
+			managerToCreate.setManagerId(createdManagerId);
+			return managerToCreate;
         }
         throw new NullBodyException(
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");

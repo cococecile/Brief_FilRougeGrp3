@@ -9,3 +9,7 @@
 • * JUnit • JSON
 • * Plugin Sonar • Web Services
 • CSS3
+
+# 16 Nov 2021 
+* delete header et footer de develop_front
+* page list employee failed voir avec les modifs récentes 

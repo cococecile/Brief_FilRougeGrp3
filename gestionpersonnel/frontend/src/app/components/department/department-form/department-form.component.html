@@ -1,3 +1,55 @@
 <a class="dropdown-item" routerLink="/">Page Accueil</a>
 
-<h1>Créer un pôle de travail</h1>
+<section class="department-form">
+    <h1>Créer un pôle de travail</h1>
+
+    <div class="card" style="width: 50rem; padding:20px;">
+
+        <form class="">
+            <!-- NOM DU POLE -->
+            <div class="input-group input-group-lg">
+                  <h3>Nom du Pôle</h3>
+                  <input type="text" class="form-control" placeholder="nom du pôle" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              </div>
+
+            <!-- NOM DU MANAGER -->
+            <div class="input-group mb-3">
+                <h3>MANAGER</h3>
+                    <p>Géré par : </p>
+                    <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="1">Manager id: et nom:</option>
+                    <option value="2">Manager id: et nom:</option>
+                    <option value="3">Manager id: et nom:</option>
+                    </select>
+                </div>
+
+            <!-- Liste des missions du département -->
+            <h3>Liste des pôles</h3>
+                <p>existants au sein de l'entreprise <i> et des <em style="color:blue; font-weight:bold;">missions</em> qui y sont affectées</i></p>
+                <div class="card list-missions" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">department id: mission id:</li>
+                  <li class="list-group-item">department id: mission id:</li>
+                  <li class="list-group-item">department id: mission id:</li>
+                </ul>
+              </div>
+
+              
+            <!-- Liste des employés dans le département -->
+            <h3>Liste des pôles</h3>
+            <p>au sein de l'entreprise <i>et des <em style="color:blue; font-weight:bold;">employés</em> qui y sont missionnés</i></p>
+            <div class="card list-missions" style="width: 18rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">pole affiliation id: employee id:</li>
+              <li class="list-group-item">pole affiliation id: employee id:</li>
+              <li class="list-group-item">pole affiliation id: employee id:</li>
+            </ul>
+          </div>
+
+            <!-- SAVE -->
+            <button type="button" class="btn btn-success">ENREGISTRER</button>
+            
+        </form>
+    </div>
+</section>

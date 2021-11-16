@@ -19,8 +19,9 @@ public interface IDepartmentService {
      * {@link group3.gestionpersonnel.persistence.entitties.DepartmentDo DepartmentDo} and
      * forwards it to {@link group3.gestionpersonnel.persistence.dao.IDepartmentDao
      * IDepartmentDao} for database insertion.
+     * @return 
      */
-    void saveDepartment(DepartmentDto departmentToCreate);
+    DepartmentDto saveDepartment(DepartmentDto departmentToCreate);
 
 
     /**

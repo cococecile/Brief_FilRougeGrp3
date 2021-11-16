@@ -50,8 +50,9 @@ public interface IManagerService {
      * forwards it to {@link group3.gestionpersonnel.persistence.dao.IManagerDao
      * IManagerDao} for database insertion.
      * @param managerToCreate = a Manager object which contains the information about the manager we need to create or update
+	 * @return 
      */
-	void saveManager(ManagerDto managerToCreate);
+	ManagerDto saveManager(ManagerDto managerToCreate);
 
 	/**
      * Calls {@link group3.gestionpersonnel.persistence.dao.IManagerDao IManagerDao}

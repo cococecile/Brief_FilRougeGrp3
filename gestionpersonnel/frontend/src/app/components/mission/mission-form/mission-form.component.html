@@ -1,3 +1,61 @@
 <a class="dropdown-item" routerLink="/">Page Accueil</a>
 
-<h1>Créer une mission</h1>
+<section class="mission-form">
+    <h1>Créer une mission</h1>
+    <div class="card" style="width: 50rem; padding:20px;">
+  
+        
+        <form class="">
+            <!-- NOM MISSION -->
+            <div class="input-group input-group-lg">
+                  <h3>Nom de la mission</h3>
+                  <input type="text" class="form-control" placeholder="nom de la mission" aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+              </div>
+
+            <!-- DE DATE DEBUT | A DATE FIN -->
+            <h3>Début de mission</h3>
+              <h4>De</h4>
+              <div class="datepicker date input-group">
+                <input type="date" placeholder="Choisir une date" class="form-control" id="reservationDate">
+                <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>
+              </div>
+              <h3>Fin de mission</h3>
+                <h4>à</h4>
+              <div class="datepicker date input-group">
+                <input type="date" placeholder="Choisir une date" class="form-control" id="reservationDate">
+                <div class="input-group-append"><span class="input-group-text px-4"><i class="fa fa-calendar"></i></span></div>
+              </div>
+            <!-- DESCRIPTION -->
+            <div class="form-group">
+              <h3>Description</h3>
+              <textarea class="form-control" placeholder="Description de la mission..." id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <!-- TYPE DE MISSION - LIST -->
+            <div class="input-group mb-3">
+              <h3>Type de la mission</h3>
+                <select class="custom-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">Type mission id: et nom:</option>
+                  <option value="2">Type mission id: et nom:</option>
+                  <option value="3">Type mission id: et nom:</option>
+                </select>
+              </div>
+            <!-- ATTRIBUTION EMPLOYEE -->
+            <div class="input-group mb-3">
+              <h3>Attribuer la mission</h3>
+                <h4>au pôle</h4>
+                <select class="custom-select" id="inputGroupSelect01">
+                  <option selected>Choose...</option>
+                  <option value="1">department id: </option>
+                  <option value="2">department id:</option>
+                  <option value="3">department id:</option>
+                </select>
+              </div>
+            <!-- SAVE -->
+            <button type="button" class="btn btn-success">ENREGISTRER</button>
+            
+        </form>
+    </div>
+
+
+</section>
