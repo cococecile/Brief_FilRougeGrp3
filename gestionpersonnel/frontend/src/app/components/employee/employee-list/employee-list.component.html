@@ -31,35 +31,24 @@
                 <label><strong>Firsname:</strong></label> {{ <selected class="employeeFirstName"></selected> }}
             </div>
             <div>
-                <label><strong>Lastename:</strong></label> {{ <selected class="employeeLastName"></selected> }}
+                <label><strong>Lastname:</strong></label> {{ <selected class="employeeLastName"></selected> }}
                 
             </div>
+           
             <div>
-                <label><strong>Mail:</strong></label> {{ <selected class="employeeMail"></selected> }}
-            </div>
-            <div>
-                <label><strong>Position:</strong></label> {{ <selected class="employeePosition"></selected> }}
+                <label><strong>Department:</strong></label> {{ <selected class="employeeDepartment"></selected> }}
             </div>
             
 
-            <a class="btn btn-sm btn-secondary mr-2" routerLink="/employee-form/{{ selected.id }}">
+            <button class="btn btn-sm btn-secondary mr-2" routerLink="/employee-detail/{{ selected.id }}">
                 Edit
-            </a>
+            </button>
 
             <button class="btn btn-sm btn-danger mr-2" (click)="deleteEmployee()">
                 Delete
             </button>
 
-            
-            <button
-                    *ngIf="selected.id && !selected.published"
-                    class="btn btn-sm btn-warning mr-2"
-                    (click)="detailEmployee(true)">
-                Details
-            </button>
         </div>
-
-       
     </div>
 </div>
 

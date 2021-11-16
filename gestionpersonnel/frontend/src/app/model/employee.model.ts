@@ -1,9 +1,13 @@
+import { Manager } from "./manager.model";
+
 export class Employee {
-   employeeId?: any
-	 employeeFirstName?: string
-	 employeeLastName?: string
-	 employeeMail?: string
-	 employeePosition?: string
-     employeeManagedBy?: string
-	 employeeMission?: string
-}
+
+	employeeId?: any;
+    employeeFirstname?: string;
+    employeeLastname?: string;
+    employeeEmail?: string;
+    employeeStatus?: string;
+	employeeManager?: Manager;
+    //employeeDepartement?: Departement;
+    //employeeMission?: Mission;
+  }
