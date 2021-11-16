@@ -5,28 +5,28 @@
   <form>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="inputEmail4" style="font-weight: bold;">Nom</label>
+        <label for="inputEmail4" style="font-weight: bold;">Nom <em style="color:red;">*</em></label>
         <input type="text" class="form-control" id="inputFirstname" placeholder="Nom">
       </div>
       <div class="form-group col-md-6">
-        <label for="inputPassword4" style="font-weight: bold;">Prénom</label>
+        <label for="inputPassword4" style="font-weight: bold;">Prénom <em style="color:red;">*</em></label>
         <input type="text" class="form-control" id="inputLastname" placeholder="Prénom">
       </div>
     
     </div>
     <div class="form-group">
-      <label for="inputAddress" style="font-weight: bold;">Email</label>
+      <label for="inputAddress" style="font-weight: bold;">Email <em style="color:red;">*</em></label>
       <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
     </div>
 
     <div class="form-group col-md-4">
-      <label for="inputPassword4" style="font-weight: bold;">Statut</label>
+      <label for="inputPassword4" style="font-weight: bold;">Statut <em style="color:red;">*</em></label>
       <input type="text" class="form-control" id="inputLastname" placeholder="Statut">
     </div>
 
 
     <div class="form-group col-md-4">
-      <label for="inputState" style="font-weight: bold;">Departement</label>
+      <label for="inputState" style="font-weight: bold;">Departement <em style="color:red;">*</em></label>
       <p><i>dans lequel travaille l'employé</i></p>
       <select id="inputState" class="form-control">
         <option selected></option>
@@ -41,7 +41,7 @@
     </div>
 
     <div class="form-group col-md-4">
-      <label for="inputState" style="font-weight: bold;">Manager</label>
+      <label for="inputState" style="font-weight: bold;">Manager <em style="color:red;">*</em></label>
       <p><i>L'employé est sous la direction de ce référent</i></p>
       <select id="inputState" class="form-control">
         <option selected></option>
@@ -76,7 +76,8 @@
         </label>
       </div>
   </div>
-  <button type="submit" class="btn btn-dark">Sign in</button>
+  <em style="color:red;">* <i>Mention obligatoire</i></em>
+  <button type="submit" class="btn btn-dark">Enregistrer</button>
     </div>
 
   </form>
