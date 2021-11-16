@@ -26,7 +26,7 @@ public class ManagerDo {
 	private String managerEmail;
 	
 	@OneToOne
-	@JoinColumn(name="fk_manager_department")
+	@JoinColumn(name="fk_manager_department", nullable=false)
 	@JsonBackReference
 	private DepartmentDo managerDepartment;
 	
