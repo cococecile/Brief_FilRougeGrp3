@@ -1,1 +1,38 @@
-<p>department-detail works!</p>
+<section class="department-detail" style="width:30rem;">
+    <h1>Fiche détails pôle</h1>
+    <div class="card-header">
+        <h3>Details du pôle :name</h3>
+      </div>
+    <div class="card text-center">
+        <div class="card-body">
+            <!-- NAME POLE -->
+            <h5 class="card-title">:name</h5>
+            <!-- MANAGER POLE -->
+            <p class="card-text">:manager</p>
+                <div class="input-group mb-3">
+                <h3>Missions <i>existantes</i></h3>
+                    <!-- MISSIONS DE CE POLE -->
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Visualiser.</option>
+                        <option value="1">mission id:/:name</option>
+                        <option value="2">mission id:/:name</option>
+                        <option value="3">mission id:/:name</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3">
+                    <h3>Missions <i>existantes</i></h3>
+                    <!-- EMPLOYES DE CE POLE -->
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Visualiser.</option>
+                        <option value="1">employes id:/:name</option>
+                        <option value="2">employes id:/:name</option>
+                        <option value="3">employes id:/:name</option>
+                    </select>
+                </div>
+        
+            <a routerLink="/department-list" class="btn btn-primary">Revenir à la liste</a>
+        </div>
+    </div>
+</section>
+   
+    
