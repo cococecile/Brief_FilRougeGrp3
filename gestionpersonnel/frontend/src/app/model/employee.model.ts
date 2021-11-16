@@ -1,4 +1,4 @@
-export class EmployeeDto {
+export class Employee {
    employeeId?: any
 	 employeeFirstName?: string
 	 employeeLastName?: string
