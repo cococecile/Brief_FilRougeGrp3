@@ -36,8 +36,9 @@ public interface IEmployeeService {
      * forwards it to {@link group3.gestionpersonnel.persistence.dao.IEmployeeDao
      * IEmployeeDao} for database insertion.
      * @param employeeToCreate = an Employee object which contains the information about the employee we need to create or update
+	 * @return 
      */
-	void saveEmployee(EmployeeDto employeeToCreate);
+	EmployeeDto saveEmployee(EmployeeDto employeeToCreate);
 
 	/**
      * Calls {@link group3.gestionpersonnel.persistence.dao.IEmployeeDao IEmployeeDao}

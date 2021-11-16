@@ -37,8 +37,8 @@ public class DepartmentController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveDepartment(@RequestBody DepartmentDto departmentToCreate) {
-        service.saveDepartment(departmentToCreate);
+    public DepartmentDto saveDepartment(@RequestBody DepartmentDto departmentToCreate) {
+        return service.saveDepartment(departmentToCreate);
     }
 
     /**

@@ -41,7 +41,7 @@ public class MissionServiceImpl implements IMissionService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MissionServiceImpl.class);
 
     @Override
-    public void saveMission(MissionDto missionToCreate) {
+    public MissionDto saveMission(MissionDto missionToCreate) {
         LOGGER.info("--- MISION SERVICE SAVE METHOD ---");
         if (missionToCreate != null && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionName())
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionDescription())
@@ -49,9 +49,10 @@ public class MissionServiceImpl implements IMissionService {
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionStartDate())
                 && NullChecker.isNotNullAndNotEmpty(missionToCreate.getMissionEndDate())) {
             mapper.getConfiguration().setAmbiguityIgnored(true);
-            MissionDo missionConvertedForDatabase = mapper.map(missionToCreate, MissionDo.class);
-            missionDao.save(missionConvertedForDatabase);
-            return;
+            MissionDo missionConvertedForDatabase = mapper.map(missionToCreate, MissionDo.class);           
+            Long createdMissionId = missionDao.save(missionConvertedForDatabase).getMissionId();
+            missionToCreate.setMissionId(createdMissionId);
+            return missionToCreate;
         }
         throw new NullBodyException(
                 "One of the required fields is missing ! Please check all required fields are provided and retry.");

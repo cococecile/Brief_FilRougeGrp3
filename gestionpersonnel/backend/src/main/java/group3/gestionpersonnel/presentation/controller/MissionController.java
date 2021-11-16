@@ -35,9 +35,9 @@ public class MissionController {
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void saveMission(@RequestBody MissionDto missionToCreate) {
+    public MissionDto saveMission(@RequestBody MissionDto missionToCreate) {
 
-        service.saveMission(missionToCreate);
+        return service.saveMission(missionToCreate);
 
     }
 
