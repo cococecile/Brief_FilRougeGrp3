@@ -1,4 +1,4 @@
-package group3.gestionpersonnel.security.business;
+package group3.gestionpersonnel.security.business.services.interfaces;
 
 import group3.gestionpersonnel.security.persistence.UserDo;
 

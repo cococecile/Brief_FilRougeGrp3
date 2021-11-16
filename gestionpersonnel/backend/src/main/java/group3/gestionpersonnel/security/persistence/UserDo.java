@@ -1,17 +1,10 @@
 package group3.gestionpersonnel.security.persistence;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import org.hibernate.annotations.NaturalId;
@@ -36,21 +29,16 @@ public class UserDo {
 
 	@Column(name="is_user_enabled")
 	private Boolean isUserEnabled;
-
-	@ManyToMany(fetch= FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name="user_role", joinColumns = @JoinColumn(name="user_id"),
-	inverseJoinColumns=@JoinColumn(name="role_id"))
-	private List<RoleDo>userRoles;
+	
 
 	public UserDo() {
 	}
 
-	public UserDo(int userId, @NotBlank String userName, @NotBlank String userPassword, List<RoleDo> userRoles) {
+	public UserDo(int userId, @NotBlank String userName, @NotBlank String userPassword) {
 		this.userId = userId;
 		this.userName = userName;
 		this.userPassword = userPassword;
-		this.userRoles = userRoles;
-	}
+			}
 
 	public int getUserId() {
 		return userId;
@@ -75,14 +63,5 @@ public class UserDo {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-
-	public List<RoleDo> getUserRoles() {
-		return userRoles;
-	}
-
-	public void setUserRoles(List<RoleDo> userRoles) {
-		this.userRoles = userRoles;
-	}
-
 	
 }
