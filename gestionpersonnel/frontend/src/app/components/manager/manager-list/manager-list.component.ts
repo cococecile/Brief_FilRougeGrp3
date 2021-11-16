@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Manager } from 'src/app/model/manager.model';
+import { ManagerService } from 'src/app/services/manager.service';
 
 @Component({
   selector: 'app-manager-list',
@@ -7,36 +10,56 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagerListComponent implements OnInit {
 
+  managers?:Manager[];
+  selected?: ManagerListComponent;
+  currentIndex: number = -1;
 
-  managers = [
+  id: any;
+  managerFirstName: string ='';
+  managerLastName: string ='';
+  managerMail: string ='';
+  managerMission: string ="";
+  managerDepartement : string ='';
+
+  // managers = [
   
-      {
-        id: '1',
-        firsname: 'Wendy',
-        lastname: 'Vandenberghe',
-        session: {
-          name: 'POEI JAVA',
-          former: {
-            name: 'yassen',
-            surname: 'abarji',
-          },
-        },
-        program: {
-          title: 'programme java angular',
-          description:
-            'ceci est un program java fort interessant Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend velit nulla, non maximus erat dictum in. Donec auctor porta dolor, eu egestas mi facilisis vitae. Maecenas in imperdiet eros. Ut nec eros neque. Phasellus dictum dolor magna, nec scelerisque nibh rhoncus non. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris eget magna a sem maximus vulputate. Proin quam massa, eleifend eu ultricies luctus, tristique in neque.',
-        },
-      },
-  ]
-  constructor() { }
+  //     {
+  //       id: "",
+  //       firsname: '',
+  //       lastname: '',
+  //       departement: {
+  //         name: '',
+  //         mission: {
+  //           name: '',
+  //         },
+  //       },
+        
+  //     },
+  // ]
+  
 
-  ngOnInit(): void {}
-
-  filterManager($event: KeyboardEvent): void {
-    const filter = ($event.target as HTMLTextAreaElement).value.toLowerCase();
-    this.managers = this.managers.filter((manager) =>
-      manager.firsname.toLowerCase().includes(filter)
-    );
+  constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
   }
 
+  ngOnInit(): void {  
+    this.route.queryParams
+    .subscribe(params => {
+      this.getAllManagers()
+      }
+     );}
+  getAllManagers():  void  {
+    this.managerService.list()
+    .subscribe(
+      data => {
+        this.managers = data;
+      },
+      error => {
+        console.error(error);
+      });
+  }
+  delete(): void {
+    if (!this.selected) {
+      return;
+    }
+  }
 }

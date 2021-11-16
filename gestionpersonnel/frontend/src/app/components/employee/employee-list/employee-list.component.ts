@@ -18,8 +18,9 @@ export class EmployeeListComponent implements OnInit {
   id: any;
   employeeFirstName: string ='';
   employeeLastName: string ='';
+  employeeMission: string ="";
   employeeMail: string ='';
-  employeePosition : string ='';
+  employeeDepartement : string ='';
 
   constructor(private employeeService: EmployeeService, private route: ActivatedRoute) { 
   }

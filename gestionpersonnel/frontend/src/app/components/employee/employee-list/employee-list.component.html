@@ -1,7 +1,18 @@
-<a class="dropdown-item" routerLink="/">Page Accueil</a>
+<section class="department-list">
+    <h1>Employees List</h1>
+        
+    <div class="card text-right" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">firsname : </h5>
+            <p class="card-text">Lastname: </p>
+            <p class="card-text">Department: </p>
+            <a routerLink="/employee-detail"><button class="btn btn-primary">Détails</button></a>
+            <a routerLink="/employee-list"><button class="btn btn-danger" (click)="delete()">Supprimer</button></a>
+        </div>
+    </div>
 
-<h1>Liste Employés</h1>
-
+</section>
+<!-- 
 <div class="list row">
     <div class="col-md-6">
         <h4>Employees List</h4>
@@ -50,5 +61,5 @@
 
         </div>
     </div>
-</div>
+</div> -->
 

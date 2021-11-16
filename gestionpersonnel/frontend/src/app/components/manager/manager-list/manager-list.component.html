@@ -1,8 +1,26 @@
 <a class="dropdown-item" routerLink="/">Page Accueil</a>
 
-<h1>Liste des managergers</h1>
+<section class="department-list">
+    <h1>Manager List</h1>
+        
+    <div class="card text-right" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Firsname : </h5>
+            <p class="card-text">Lastname: </p>
+            <p class="card-text">Department: </p>
+            <a routerLink="/manager-detail"><button class="btn btn-primary">Détails</button></a>
+            <a routerLink="/manager-list"><button class="btn btn-danger"(click)="delete()">Supprimer</button></a>
+        </div>
+    </div>
+
+</section>
 
 
+
+
+
+
+<!-- 
 <div class="list row">
     <div class="col-md-6">
         <h4>managers List</h4>
@@ -29,21 +47,21 @@
     </div>
     <div class="col-md-6">
         <div>
-           
+            -->
             <!-- <div>
                 <label><strong>Firsname:</strong></label> {{ manager.FirstName}} -->
-            </div>
-            <div>
+            <!-- </div>
+            <div> -->
                 <!-- <label><strong>Lastname:</strong></label> {{ manager.LastName }} -->
                 
-            </div>
+            <!-- </div>
            
-            <div>
+            <div> -->
                 <!-- <label><strong>Department:</strong></label> {{ manager.Department }} -->
-            </div>
+            <!-- </div>
             
 
 
         </div>
     
-</div>
+</div> -->

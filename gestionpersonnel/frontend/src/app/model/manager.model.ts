@@ -7,5 +7,5 @@ export class Manager {
     managerEmail?: string;
     managerEmployees?: Employee;
     managerDepartement?: string;
-    // managerMission?: Mission;
+    //managerMission?: Mission;
   }
