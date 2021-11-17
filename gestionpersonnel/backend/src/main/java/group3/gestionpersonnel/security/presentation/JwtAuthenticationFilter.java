@@ -61,9 +61,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
     
     /**
-     * This method extracts the token from the HTTP request
+     * This method checks if the HTTP request has a token in its header and if so, extracts it.
      * @param request = the request whose token is needed
-     * @return the request's token
+     * @return the request's token if it exists, null if it doesn't
      */
     private String getJwtFromRequest(HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");

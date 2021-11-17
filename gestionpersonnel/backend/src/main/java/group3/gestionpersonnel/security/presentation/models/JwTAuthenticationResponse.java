@@ -1,18 +1,18 @@
-package group3.gestionpersonnel.security.business;
+package group3.gestionpersonnel.security.presentation.models;
 
 import java.util.Optional;
 
-import group3.gestionpersonnel.persistence.entitties.UserDo;
+import group3.gestionpersonnel.security.persistence.UserDo;
 
-public class JwtAuthenticationResponse {
+public class JwTAuthenticationResponse {
 	
-	private Optional<UserDo> userDo;
+	private Optional<UserDo> user;
     private String accessToken;
     private String tokenType = "Bearer";
 
-    public JwtAuthenticationResponse(String accessToken, Optional<UserDo> optional) {
+    public JwTAuthenticationResponse(String accessToken, Optional<UserDo> optional) {
         this.accessToken = accessToken;
-        this.userDo = optional;
+        this.user = optional;
     }
 
     public String getAccessToken() {
@@ -32,11 +32,11 @@ public class JwtAuthenticationResponse {
     }
 
     public Optional<UserDo> getUser() {
-        return this.userDo;
+        return this.user;
     }
 
     public void setUser(Optional<UserDo> user) {
-        this.userDo = user;
+        this.user = user;
     }
 
 }

@@ -47,6 +47,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * This method creates a Bean AuthenticationManager, whose authenticate() method is needed to check the user's credentials.
+     */
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -62,6 +65,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
     
+    /**
+     * This method sets which pages a user is allowed to get when not logged in.
+     * In this case, access to every page whose URL starts with .../api/auth/ is allowed even when not logged in.
+     * The point is that the user cannot acces the signin page without being signed in unless we specifically allow it with this method. 
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -73,7 +81,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .authenticationEntryPoint(this.unauthorizedHandler)
         .and()
         .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .sessionCreationPolicy(SessionCreationPolicy.STATELESS) //don't bother creating a session
         .and()
         .authorizeRequests()
         .antMatchers("/",
@@ -88,10 +96,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .permitAll()
         .antMatchers("/api/auth/**")
         .permitAll()
-        .antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
-        .permitAll()
-        .antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
-        .permitAll()
+        //.antMatchers("/api/user/checkUsernameAvailability", "/api/user/checkEmailAvailability")
+        //.permitAll()
+        //.antMatchers(HttpMethod.GET, "/api/polls/**", "/api/users/**")
+        //.permitAll()
         .anyRequest()
         .authenticated();
 

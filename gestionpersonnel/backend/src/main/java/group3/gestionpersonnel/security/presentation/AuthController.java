@@ -13,7 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import group3.gestionpersonnel.security.business.JwtAuthenticationResponse;
+import group3.gestionpersonnel.security.presentation.models.JwTAuthenticationResponse;
+import group3.gestionpersonnel.security.presentation.models.LoginRequest;
 import group3.gestionpersonnel.security.business.JwtTokenProvider;
 import group3.gestionpersonnel.security.persistence.IUserDao;
 
@@ -46,7 +47,7 @@ public class AuthController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = this.tokenProvider.generateToken(authentication);
-       return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, this.userDao.findByUserName(loginRequest.getUserName())));
+       return ResponseEntity.ok(new JwTAuthenticationResponse(jwt, this.userDao.findByUserName(loginRequest.getUserName())));
     }
 
 

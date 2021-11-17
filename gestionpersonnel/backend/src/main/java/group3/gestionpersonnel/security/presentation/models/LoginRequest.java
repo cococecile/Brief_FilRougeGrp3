@@ -1,4 +1,4 @@
-package group3.gestionpersonnel.security.presentation;
+package group3.gestionpersonnel.security.presentation.models;
 
 import javax.validation.constraints.NotBlank;
 

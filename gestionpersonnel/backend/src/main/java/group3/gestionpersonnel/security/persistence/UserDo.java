@@ -1,4 +1,4 @@
-package group3.gestionpersonnel.persistence.entitties;
+package group3.gestionpersonnel.security.persistence;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

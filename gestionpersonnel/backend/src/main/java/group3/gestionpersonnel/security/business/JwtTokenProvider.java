@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
-import group3.gestionpersonnel.security.presentation.UserPrincipal;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
@@ -37,7 +37,7 @@ public class JwtTokenProvider {
 
 	    /**
 	     * This method generates a token, which will be used as an identifier for the user during navigation on the app.
-	     * @param authentication = ????
+	     * @param authentication = An Authentication Bean, whose attribute UserPrincipal is needed
 	     * @return a JWT with the following attributes:
 	     * - the user's username as a Subject
 	     * - the date the token was issued, set to now
@@ -46,13 +46,13 @@ public class JwtTokenProvider {
 	     */
 	    public String generateToken(Authentication authentication) {
 
-	        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+	        User userPrincipal = (User) authentication.getPrincipal();
 
 	        Date now = new Date();
 	        Date expiryDate = new Date(now.getTime() + this.jwtExpirationInMs);
 
 	        return Jwts.builder()
-	                .setSubject(userPrincipal.getUserName())
+	                .setSubject(userPrincipal.getUsername())
 	                .setIssuedAt(new Date())
 	                .setExpiration(expiryDate)
 	                .signWith(SignatureAlgorithm.HS512, this.jwtSecret)
