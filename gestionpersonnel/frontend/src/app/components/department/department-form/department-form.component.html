@@ -25,27 +25,30 @@
             </div>
 
             <!-- Liste des missions du département -->
-            <h3>Liste des pôles</h3>
-                <p>existants au sein de l'entreprise <i> et des <em style="color:blue; font-weight:bold;">missions</em> qui y sont affectées</i></p>
-                <div class="card list-missions" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">department id: mission id:</li>
-                  <li class="list-group-item">department id: mission id:</li>
-                  <li class="list-group-item">department id: mission id:</li>
-                </ul>
-              </div>
+            <h3>Liste des pôles existants et des <em style="color:blue; font-weight:bold;">des missions</em> qui y sont affectées</h3>
+                <div class="input-group mb-3">
+                  <!-- MISSIONS DE CE POLE -->
+                    <select class="custom-select" id="inputGroupSelect01">
+                        <option selected>Visualiser.</option>
+                        <option value="1">missionNname rattachée au Pôle :departmentName</option>
+                        <option value="2">missionNname rattachée au Pôle :departmentName</option>
+                        <option value="3">mission :name</option>
+                    </select>
+                  </div>
 
               
             <!-- Liste des employés dans le département -->
-            <h3>Liste des pôles</h3>
-            <p>au sein de l'entreprise <i>et des <em style="color:blue; font-weight:bold;">employés</em> qui y sont missionnés</i></p>
-            <div class="card list-missions" style="width: 18rem;">
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">pole affiliation id: employee id:</li>
-              <li class="list-group-item">pole affiliation id: employee id:</li>
-              <li class="list-group-item">pole affiliation id: employee id:</li>
-            </ul>
-          </div>
+            <h3>Liste des pôles et des <em style="color:blue; font-weight:bold;">employés</em> qui y sont rattachés </h3>
+            <div class="input-group mb-3">
+                  <!-- EMPLOYES DANS CE POLE -->
+                  <select class="custom-select" id="inputGroupSelect01">
+                      <option selected>Visualiser.</option>
+                      <option value="1">employeeName rattraché au departmentName</option>
+                      <option value="2">employeeName rattraché au departmentName</option>
+                      <option value="3">employeeName rattraché au departmentName</option>
+                  </select>
+              </div>
+
 
             <!-- SAVE -->
             <button type="button" class="btn btn-success">ENREGISTRER</button>

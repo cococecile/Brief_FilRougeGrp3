@@ -10,6 +10,5 @@
 • * Plugin Sonar • Web Services
 • CSS3
 
-# 16 Nov 2021 
-* delete header et footer de develop_front
-* page list employee failed voir avec les modifs récentes 
+# data type ANGULAR
+https://www.typescriptlang.org/docs/handbook/basic-types.html
