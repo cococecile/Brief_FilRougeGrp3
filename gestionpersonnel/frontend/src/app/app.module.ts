@@ -22,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
+import { MissionComponent } from './services/mission/mission.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { data } from 'jquery';
     ManagerFormComponent,
     NavComponent,
     FooterComponent,
+    MissionComponent,
   ],
   imports: [
     BrowserModule,
