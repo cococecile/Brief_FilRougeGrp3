@@ -14,14 +14,7 @@ export class ManagerListComponent implements OnInit {
   selected?: ManagerListComponent;
   currentIndex: number = -1;
 
-  id: any;
-  managerFirstName: string ='';
-  managerLastName: string ='';
-  managerMail: string ='';
-  managerMission: string ="";
-  managerDepartement : string ='';
-
-
+  
   constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
   }
 
@@ -32,7 +25,7 @@ export class ManagerListComponent implements OnInit {
       }
      );}
   getAllManagers():  void  {
-    this.managerService.list()
+    this.managerService.getAll()
     .subscribe(
       data => {
         this.managers = data;
@@ -40,6 +33,13 @@ export class ManagerListComponent implements OnInit {
       error => {
         console.error(error);
       });
+  }
+
+  
+  refreshList(): void {
+    this.getAllManagers();
+    this.selected = undefined;
+    this.currentIndex = -1;
   }
   delete(): void {
     if (!this.selected) {

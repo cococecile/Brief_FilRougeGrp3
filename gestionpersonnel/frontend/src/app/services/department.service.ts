@@ -1,68 +1,81 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Department } from '../model/department.model';
 
-
-const baseUrl = "http://localhost:8080/api/managers";
+const baseUrl = "http://localhost:8080/api/departments";
 
 @Injectable({
   providedIn: 'root'
 })
-export class ManagerService {
- 
+export class DepartmentService {
 
   constructor(private http: HttpClient) { }
 
 
-
- /**
-   * Get the list of all Manager
+  /**
+   * Get the list of all Department
    * 
    * @returns http get request
    */
-  getAll(): Observable<any> {
+   list(): Observable<any> {
     return this.http.get(baseUrl);
   }
+
  
   /**
-   * Find a Manager by id
+   * Find a Department by id
    * 
    * @param id 
    * @returns http get request
    */
-   get(id): Observable<any> {
+  get(id: any): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
   /**
-   * Create a new Manager
+   * Create a new Department
    * 
    * @param data 
    * @returns http post request
    */
-   create(data): Observable<any> {
+  create(data: Department): Observable<any> {
     return this.http.post(baseUrl, data);
   }
 
-
   /**
-   * Update a Manager
+   * Update a Department
    * 
    * @param id 
    * @param data 
    * @returns http put request
    */
-  update(id, data): Observable<any> {
+  update(id: string, data: Department): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
+  
+    /**
+   * save a Department
+   * 
+   * @param id 
+   * @param data 
+   * @returns http put request
+   */
+  save(id: string, data: Department): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
   /**
-   * Delete a Manager
+   * Delete a Department
    * 
    * @param id 
    * @returns http delete request
    */
-   delete(id: string): Observable<any> {
+  delete(id: any): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
+
+
 }
+
+

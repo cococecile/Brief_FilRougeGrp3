@@ -6,13 +6,14 @@ import { DepartmentFormComponent } from './components/department/department-form
 import { DepartmentListComponent } from './components/department/department-list/department-list.component';
 import { EmployeeDetailComponent } from './components/employee/employee-detail/employee-detail.component';
 import { EmployeeFormComponent } from './components/employee/employee-form/employee-form.component';
+import { EmployeeListComponent } from './components/employee/employee-list/employee-list.component';
 import { ManagerDetailComponent } from './components/manager/manager-detail/manager-detail.component';
 import { ManagerFormComponent } from './components/manager/manager-form/manager-form.component';
 import { ManagerListComponent } from './components/manager/manager-list/manager-list.component';
 import { MissionDetailComponent } from './components/mission/mission-detail/mission-detail.component';
 import { MissionFormComponent } from './components/mission/mission-form/mission-form.component';
 import { MissionListComponent } from './components/mission/mission-list/mission-list.component';
-import { EmployeeListComponent } from './components/employee/employee-list/employee-list.component';
+
 
 
 const routes: Routes = [

@@ -1,11 +1,12 @@
+import { Department } from "./department.model";
 import { Employee } from "./employee.model";
+import { Mission } from "./mission.model";
 
 export class Manager {
     managerId?: any;
-    managerFirstname?: string;
-    managerLastname?: string;
+    managerFirstName?: string;
+    managerLastName?: string;
     managerEmail?: string;
-    managerEmployees?: Employee;
-    managerDepartement?: string;
-    //managerMission?: Mission;
+    managerDepartment?: Department;
+    managerEmployees?: [Employee];
   }

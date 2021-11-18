@@ -19,6 +19,9 @@ import { ManagerFormComponent } from './components/manager/manager-form/manager-
 import { NavComponent } from './components/nav/nav.component';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
+import { data } from 'jquery';
 
 
 @NgModule({
@@ -45,6 +48,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     ],
     
   providers: [],

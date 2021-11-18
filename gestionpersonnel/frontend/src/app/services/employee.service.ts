@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Employee } from '../model/employee.model';
 
 
 
-const baseUrl = 'http://localhost:4200/api/employees';
+
+const baseUrl = 'http://localhost:8080/api/employees';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class EmployeeService {
    * 
    * @returns http get request
    */
-   list(): Observable<any> {
+   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
  
@@ -30,7 +30,7 @@ export class EmployeeService {
    * @param id 
    * @returns http get request
    */
-  get(id: any): Observable<any> {
+   get(id): Observable<any> {
     return this.http.get(`${baseUrl}/${id}`);
   }
 
@@ -40,9 +40,10 @@ export class EmployeeService {
    * @param data 
    * @returns http post request
    */
-  create(data: Employee): Observable<any> {
+   create(data): Observable<any> {
     return this.http.post(baseUrl, data);
   }
+
 
   /**
    * Update a Employee
@@ -51,7 +52,7 @@ export class EmployeeService {
    * @param data 
    * @returns http put request
    */
-  update(id: string, data: Employee): Observable<any> {
+  update(id, data): Observable<any> {
     return this.http.put(`${baseUrl}/${id}`, data);
   }
 
@@ -61,7 +62,7 @@ export class EmployeeService {
    * @param id 
    * @returns http delete request
    */
-  delete(id: string): Observable<any> {
+   delete(id: string): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 }

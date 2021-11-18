@@ -1,5 +1,12 @@
-import { Department } from "./department.model";
+import { Employee } from "./employee.model";
+import { Manager } from "./manager.model";
+import { Mission } from "./mission.model";
 
 export class Department {
-   //Reprend les éléments de la class//
+  
+   departmentId?: any;
+    departmentName?: string;
+    departmentEmployees?: [Employee];
+    departmentMissions?: [Mission];
+    departmentChief?: Manager;
   }
