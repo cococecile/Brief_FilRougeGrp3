@@ -1,8 +1,12 @@
 package group3.gestionpersonnel.security.business;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,8 +32,8 @@ public class AuthService implements UserDetailsService {
                 .orElseThrow(() ->
                 new UsernameNotFoundException("User not found with username : " + username)
                         );
-
-		User springUser = new User(userDo.getUserName(), userDo.getUserPassword(), null);
+		List<GrantedAuthority> roles = new ArrayList<GrantedAuthority>();               
+		User springUser = new User(userDo.getUserName(), userDo.getUserPassword(), roles);
         return springUser;
 	}
 	
@@ -41,9 +45,14 @@ public class AuthService implements UserDetailsService {
         UserDo userDo = this.userDao.findById(id).orElseThrow(
                 () -> new UsernameNotFoundException("User not found with id : " + id)
                 );
-        User springUser = new User(userDo.getUserName(), userDo.getUserPassword(), null);
+        User springUser = new User(userDo.getUserName(), userDo.getUserPassword(), new ArrayList<GrantedAuthority>());
 
         return springUser;
     }
+
+	public void create(UserDo userDo){
+		userDao.save(userDo);
+	}
+
 
 }

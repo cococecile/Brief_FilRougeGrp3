@@ -17,7 +17,7 @@ public class UserDo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
-	private int userId;
+	private Long userId;
 	
 	@NaturalId
 	@Column(name = "user_name")
@@ -28,22 +28,33 @@ public class UserDo {
 	@NotBlank
 	private String userPassword;
 
+	@Column(name="is_user_enabled")
+	private boolean isUserEnabled;
+
 	public UserDo() {
 		super();
 	}
 
-	public UserDo(int userId, String userName, String userPassword) {
+	public UserDo(Long userId, String userName, String userPassword) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userPassword = userPassword;
 	}
 
-	public int getUserId() {
+	public UserDo(String userName, String password, boolean b) {
+		this.userName = userName;
+		this.userPassword = password;
+		this.isUserEnabled = b;
+		
+
+    }
+
+    public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 

@@ -64,13 +64,15 @@ public class JwtTokenProvider {
 	     * @param token = the token we need to parse to get the userId
 	     * @return the Subject from the token's claims, parsed to get the userId as a Long value
 	     */
-	    public Long getUserIdFromJWT(String token) {
+	    public String getUserIdFromJWT(String token) {
 	        Claims claims = Jwts.parser()
 	                .setSigningKey(this.jwtSecret)
 	                .parseClaimsJws(token)
 	                .getBody();
 
-	        return Long.parseLong(claims.getSubject());
+					System.out.println(claims);
+
+	        return claims.getSubject();
 	    }
 
 	    /**

@@ -1,14 +1,10 @@
 package group3.gestionpersonnel.security.presentation.models;
 
-import javax.validation.constraints.NotBlank;
-
 public class LoginRequest {
 	
-	@NotBlank
     private String userName;
 
-    @NotBlank
-    private String password;
+    private String userPassword;
     
     public String getUserName() {
         return this.userName;
@@ -19,11 +15,11 @@ public class LoginRequest {
     }
 
     public String getPassword() {
-        return this.password;
+        return this.userPassword;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.userPassword = password;
     }
 
 }
