@@ -8,6 +8,4 @@ export class Mission {
     missionEndDate?: string;
     missionType?: string;
     missionAssignedTo?: Employee;
-
-
   }
