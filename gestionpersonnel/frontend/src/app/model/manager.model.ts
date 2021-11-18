@@ -8,5 +8,5 @@ export class Manager {
     managerLastName?: string;
     managerEmail?: string;
     managerDepartment?: Department;
-    managerEmployees?: [Employee];
+    managerEmployees?: Employee[];
   }

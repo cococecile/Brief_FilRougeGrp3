@@ -28,6 +28,17 @@ export class EmployeeDetailComponent implements OnInit {
 	employeeManagerBy: Manager;
   employeeMission: Mission;
   employeeDepartment: Department;
+
+  manager:[];
+  managerFirstName: string;
+  managerLastName: string;
+
+  department:[];
+  departmentName: string;
+
+  mission: [];
+  missionName: string;
+
   
   
 

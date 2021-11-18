@@ -10,12 +10,16 @@ import { ManagerService } from 'src/app/services/manager.service';
 })
 export class ManagerListComponent implements OnInit {
 
-  managers?:Manager[];
+  
   selected?: Manager;
   currentManager =null;
   currentIndex: number = -1;
-  managerFirstName = '';
-  managerLastName ='';
+
+  
+  managers?:[];
+  managerFirstName: string;
+  managerLastName: string;
+  
 
   
   constructor(private managerService: ManagerService, private route: ActivatedRoute) { 

@@ -1,15 +1,12 @@
-<p>employee-detail works!</p>
-<div class="card text-center">
-    <div class="card-header">
-      Details Employee
-    </div>
+<div *ngFor="let employee of employees" class="card text-center">
+    
     <div class="card-body">
-      <h5 class="card-title">{{ employeeFirstName }}  {{ employeeLastName }} </h5>
-      <p class="card-text">{{ employeeMail }}</p>
-      <p class="card-text">{{ employeePosition }}</p>
-      <p class="card-text">{{ employeeMission}}</p>
-      <p class="card-text">{{ employeeDepartment }}</p>
-      <p class="card-text">{{ employeeManagerBy }}</p>
+      <h5 class="card-title">{{ employee.employeeFirstName }}  {{ employee.employeeLastName }} </h5>
+      <p class="card-text">{{ employee.employeeMail }}</p>
+      <p class="card-text">{{ employee.employeePosition }}</p>
+      <p class="card-text">{{ employee.employeeMission.missionName }}</p>
+      <p class="card-text">{{ employee.employeeDepartment.department.departmentName }}</p>
+      <p *ngFor="let manager of managers" class="card-text">{{ employee.employeeManagerBy.managerFirstName }}  {{ employee.employeeManagerBy.managerLastName }}</p>
       <a href="employee-list" class="btn btn-dark">Go Back List</a>
     </div>
     
