@@ -1,20 +1,17 @@
 <p>manager-detail works!</p>
-<div class="card text-center">
+<div  *ngFor="let manager of managers" class="card text-center">
     <div class="card-header">
       Details Manager
     </div>
-    <div class="card-body">
-      <h5 class="card-title">Firsname & Lastename</h5>
-      <p class="card-text">Email</p>
-      <p class="card-text">Status</p>
-      <p class="card-text">Mission</p>
-      <p class="card-text">Departement</p>
+    <div class="card-body" >
+      <h5 class="card-title">{{ manager.managerFirstName }}  {{ manager.managerLastName }} <br> {{ manager.managerEmail }}</h5>
+      <p class="card-text">{{ manager.managerDepartment.departmentName }}</p>
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Employee list
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" >Employees list </a>
+        <div  *ngFor="let manager of managers" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" >{{ manager.managerEmployee.employeeFirsName}}</a>
         </div>
       </div>
       <a href="manager-list" class="btn btn-dark">Go Back List</a>
