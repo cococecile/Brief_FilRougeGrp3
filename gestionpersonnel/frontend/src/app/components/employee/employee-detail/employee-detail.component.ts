@@ -15,11 +15,12 @@ import { EmployeeListComponent } from '../employee-list/employee-list.component'
 export class EmployeeDetailComponent implements OnInit {
 
  
-  employee:Employee[];
-  selected?: EmployeeListComponent;
+  
+  selected?: Employee;
+  currentEmployee =null;
   currentIndex: number = -1;
 
-  employeeId: any;
+  employees:[];
   employeeFirstName: string;
   employeeLastName: string;
   employeeMail: string;
@@ -30,12 +31,41 @@ export class EmployeeDetailComponent implements OnInit {
   
   
 
-  constructor(private employeeService: EmployeeService,
-    private route: ActivatedRoute,
-    private router: Router) {
+  constructor(private employeeService: EmployeeService) {
     }
 
       ngOnInit(): void {
-       
+        this.retrieveEmployees();
       }
+    
+      retrieveEmployees(): void {
+       this.employeeService.getAll()
+       .subscribe(
+         data => {
+           this.employees = data;
+           console.log(data);
+         },
+         error => {
+           console.log(error);
+         });
+      }
+    
+      refreshList(): void {
+        this.refreshList();
+        this.currentEmployee = null;
+        this.currentIndex = -1;
+      }
+    
+      setActiveEmployee(employee,index): void {
+        this.currentEmployee = employee;
+        this.currentIndex = index;
+      }
+    
+      delete(): void {
+        if (!this.selected) {
+          return;
+        }
     }
+    
+    }
+    

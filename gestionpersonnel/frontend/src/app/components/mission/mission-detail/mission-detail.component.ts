@@ -17,8 +17,8 @@ export class MissionDetailComponent implements OnInit {
   mission:Mission[];
   selected?: MissionListComponent;
   currentIndex: number = -1;
-
-  missionId: any;
+ 
+  missions:[];
   missionName: string;
   employeeLastName: string;
   missionStartDate: string;
