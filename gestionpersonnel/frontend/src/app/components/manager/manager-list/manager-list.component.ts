@@ -17,9 +17,10 @@ export class ManagerListComponent implements OnInit {
 
   
   managers?:[];
+  managerId:any;
   managerFirstName: string;
   managerLastName: string;
-  
+
 
   
   constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
@@ -56,6 +57,13 @@ export class ManagerListComponent implements OnInit {
      if (!this.selected) {
        return;
      }
+     this.managerService.delete(this.selected.managerId)
+     .subscribe(
+       response => {
+         this.refreshList();
+       },
+       error => {
+         console.error(error);
+       });
  }
- 
  }

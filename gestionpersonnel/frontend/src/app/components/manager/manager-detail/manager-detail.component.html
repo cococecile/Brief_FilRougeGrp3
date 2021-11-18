@@ -1,4 +1,3 @@
-<p>manager-detail works!</p>
 <div  *ngFor="let manager of managers" class="card text-center">
     <div class="card-header">
       Details Manager
@@ -11,7 +10,7 @@
          Employee list
         </button>
         <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a *ngFor="let employee of manager.managerEmployees" class="dropdown-item" >{{ employee.employeeFirstName}} ggfjgj  {{ employee.employeeLastName}}</a>
+          <a [Employee]="employee" *ngFor="let employee of managers" class="dropdown-item" >{{manager.employee.employeeFirstName}} ggfjgj  {{ employeeLastName}}</a>
         </div>
       </div>
       <a href="manager-list" class="btn btn-dark">Go Back List</a>
