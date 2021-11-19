@@ -14,27 +14,18 @@ export class ManagerService {
 
   constructor(private http: HttpClient) { }
 
-  list(): Observable<any> {
-    return this.http.get(baseUrl);
-  }
-
-
-
- /**
-   * Get the list of all Manager
+ 
+  /**
+   * Get the list of all Employee
    * 
    * @returns http get request
    */
-  getAll(): Observable<any> {
+   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
-  findAll(): Observable<any> {
-    return this.http.get(baseUrl);
-  }
- 
  
   /**
-   * Find a Manager by id
+   * Find a Employee by id
    * 
    * @param id 
    * @returns http get request
@@ -44,7 +35,7 @@ export class ManagerService {
   }
 
   /**
-   * Create a new Manager
+   * Create a new Employee
    * 
    * @param data 
    * @returns http post request
@@ -55,7 +46,7 @@ export class ManagerService {
 
 
   /**
-   * Update a Manager
+   * Update a Employee
    * 
    * @param id 
    * @param data 
@@ -66,7 +57,7 @@ export class ManagerService {
   }
 
   /**
-   * Delete a Manager
+   * Delete a Employee
    * 
    * @param id 
    * @returns http delete request

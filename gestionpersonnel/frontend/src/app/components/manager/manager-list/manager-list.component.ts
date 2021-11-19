@@ -20,12 +20,12 @@ export class ManagerListComponent implements OnInit {
   managerFirstName = '';
   managerLastName ='';
 
-  managersOriginal: Manager[];
+  
   
 
   
   constructor(private managerService: ManagerService) { 
-    // this.getManagers()
+
   }
  
 
