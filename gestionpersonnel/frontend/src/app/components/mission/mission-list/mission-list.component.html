@@ -4,13 +4,13 @@
 <section class="missions-list">
     <h1>Liste des missions</h1>
         
-    <div class="card text-right" style="width: 18rem;">
+    <div class="card text-right" style="width: 18rem;"
+     *ngFor="let mission of missions">
         <div class="card-body">
-            <h5 class="card-title">ID de la mission : </h5>
+            <h5 class="card-title">{{ mission.missionName }} </h5>
             <p class="card-text">Nom de la mission</p>
-            <a routerLink="/mission-detail"><button class="btn btn-primary">Détails</button></a>
-            <a routerLink="/"><button class="btn btn-danger">Supprimer</button></a>
+            <a routerLink="/missionList" onclick="recupId"><button class="btn btn-primary">Détails</button></a>
+            <a routerLink="/"><button class="btn btn-danger" (click)="delete()">Supprimer</button></a>
         </div>
     </div>
-
 </section>

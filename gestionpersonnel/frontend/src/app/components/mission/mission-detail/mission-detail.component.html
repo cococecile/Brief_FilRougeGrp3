@@ -2,24 +2,20 @@
     <h1>Fiche détails mission</h1>
 
         <div class="card-header">
-            <h3>Details de la mission :name</h3>
-                <!-- REFERENT MISSION -->
-                <p>Le référent de la mission est<em style="color:blue; font-size:1.2em; font-weight:bold;"> :manager </em></p>
+            <h3>Details de la mission {{ missionName }}</h3>
         </div>
         <!-- POLE DE LA MISSION -->
         <div class="card text-center">
-            <h4>Pôle :pole</h4>
+            <h4>Pôle {{ missionIssuedBy.departmentName }}</h4>
         </div>
         <!-- DATES MISSION -->
-        <p>Cette mission <em style="color:blue; font-size:1em; font-weight:bold;">commence</em>
-        le :date-debut et <em style="color:blue; font-size:1em; font-weight:bold;">se termine </em>le :date-fin</p>
+        <p>Cette mission <em style="color:blue; font-size:1em; font-weight:bold;">commence le</em>
+        le {{ missionStartDate}} et <em style="color:blue; font-size:1em; font-weight:bold;"> se termine le</em>{{missionEndDate}}</p>
 
 
         <div class="card-body"> 
-            <!-- NAME MISSION ET TYPE-->
-            <h2 class="card-title">:name</h2>
-                <h3>:type</h3>
-                
+            <!-- NAME MISSION-->
+            <h2 class="card-title">{{ missionName }}</h2>   
         </div>
 
 
@@ -27,7 +23,7 @@
         <!-- DESCRIPTION MISSION-->
         <div class="form-group">
             <h5 class="card-title">Quelle est cette mission?</h5>
-            <p class="form-control" id="">:description</p>
+            <p class="form-control" id="">{{ missionDescription }}</p>
         </div>  
 
     <a routerLink="/mission-list" class="btn btn-primary">Revenir à la liste</a>

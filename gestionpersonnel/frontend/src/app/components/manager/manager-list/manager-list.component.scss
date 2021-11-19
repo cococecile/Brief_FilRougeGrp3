@@ -1,26 +1,8 @@
-.learner-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25em, 1fr));
-    justify-items: center;
-    row-gap: 2em;
+/** SECTION CLASS MANAGER-LIST */
+.manager-list{
+  margin:50px;
+}
+  .manager-list .btn{
+      margin-left:10px;
   }
   
-  :host ::ng-deep .ant-btn-primary {
-    background: linear-gradient(90deg, #e22a6f 0%, #fe6666 100%), #222222;
-    border-color: palevioletred;
-  }
-  
-  .button-add {
-    position: fixed;
-    width: 3.5em;
-    height: 3.5em;
-    right: 0;
-    bottom: 0;
-    margin-bottom: 2em;
-    margin-right: 2em;
-  }
-  
-  :host ::ng-deep .ant-input-group-wrapper {
-    width: 30%;
-    float: right;
-  }
