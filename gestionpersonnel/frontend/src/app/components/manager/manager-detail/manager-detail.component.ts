@@ -16,38 +16,41 @@ export class ManagerDetailComponent implements OnInit {
   currentManager=null;
   currentIndex: number = -1;
 
-  managers:[];
+  managers?:[];
+  managerId:any;
   managerFirstName: string;
   managerLastName: string;
   managerEmail: string;
   managerDepartment: Department;
+  managerEmployee: Employee;
 
-  department:[];
+  
   departmentName: string;
 
-  managedEmployee: Employee;
-  employee: [];
-  employeeFirsName: string;
+  
+  employee?:[];
+  employeeFirstName: string;
+  employeeLastName: string;
 
 
 
-  constructor(private employeeService: ManagerService) {
+  constructor(private managerService: ManagerService) {
   }
 
   ngOnInit(): void {
-     this.retrieveManagers();
+   this.retrieveManagers();
       }
     
       retrieveManagers(): void {
-       this.employeeService.getAll()
-       .subscribe(
+      this.managerService.getAll()
+        .subscribe(
          data => {
            this.managers = data;
            console.log(data);
          },
          error => {
-           console.log(error);
-         });
+            console.log(error);
+          });
       }
     
       refreshList(): void {
@@ -56,8 +59,8 @@ export class ManagerDetailComponent implements OnInit {
         this.currentIndex = -1;
       }
     
-      setActiveManager(employee,index): void {
-        this.currentManager = employee;
+      setActiveManager(manager,index): void {
+        this.currentManager = manager;
         this.currentIndex = index;
       }
     

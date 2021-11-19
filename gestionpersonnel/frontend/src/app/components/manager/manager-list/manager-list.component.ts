@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Manager } from 'src/app/model/manager.model';
@@ -14,28 +15,35 @@ export class ManagerListComponent implements OnInit {
   selected?: Manager;
   currentManager =null;
   currentIndex: number = -1;
+
+  managerId:any;
   managerFirstName = '';
   managerLastName ='';
 
+  managersOriginal: Manager[];
   
-  constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
+
+  
+  constructor(private managerService: ManagerService) { 
+    // this.getManagers()
   }
+ 
 
   ngOnInit(): void {  
     this.retrieveManagers()
       }
     
-  retrieveManagers(): void {
-    this.managerService.getAll()
-    .subscribe(
-      data => {
+   retrieveManagers(): void {
+   this.managerService.getAll()
+     .subscribe(
+     data => {
         this.managers = data;
-        console.log(data);
+       console.log(data);
       },
       erreur => {
         console.log(erreur);
       });
-   }
+    }
  
    refreshList(): void {
      this.refreshList();
@@ -48,10 +56,24 @@ export class ManagerListComponent implements OnInit {
      this.currentIndex = index;
    }
  
-   delete(): void {
-     if (!this.selected) {
-       return;
-     }
- }
- 
- }
+  //  delete(managerId:any): void {
+  //    if (!this.selected) {
+  //      return;
+  //    }
+     
+  //  getManagers():  void {
+  //     this.managerService.findAll().subscribe((res: HttpResponse<Manager[]>) => {
+  //       this.managers = res.body;
+  //       this.managersOriginal = this.managers;
+  //     });
+  //   }
+    // delete(managerId: any): void {
+    //   this.managerService.delete(managerId).subscribe((res: HttpResponse<any>) => {
+    //     console.log(res.status);
+    //     if (res.status === 200) {
+    //       this.getManagers();
+    //     }
+    //   });
+  
+  //}
+}

@@ -11,17 +11,15 @@ import { EmployeeService } from 'src/app/services/employee.service';
 })
 export class EmployeeListComponent implements OnInit {
   
-  
+  employees: [];
   selected?: Employee;
   currentEmployee =null;
   currentIndex = -1;
-
-  employees?: Employee[];
   employeeFirstName = '';
   employeeLastName ='';
 
 
-  constructor(private employeeService: EmployeeService, private route: ActivatedRoute) { }
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.retrieveEmployees();

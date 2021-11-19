@@ -1,4 +1,3 @@
-<p>manager-detail works!</p>
 <div  *ngFor="let manager of managers" class="card text-center">
     <div class="card-header">
       Details Manager
@@ -10,8 +9,8 @@
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          Employee list
         </button>
-        <div  *ngFor="let manager of managers" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" >{{ manager.managerEmployee.employeeFirsName}}</a>
+        <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a [Employee]="employee" *ngFor="let employee of managers" class="dropdown-item" >{{employee.employeeFirstName}} ggfjgj  {{ employeeLastName}}</a>
         </div>
       </div>
       <a href="manager-list" class="btn btn-dark">Go Back List</a>

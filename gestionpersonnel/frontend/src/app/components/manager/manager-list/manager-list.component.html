@@ -3,8 +3,8 @@
         
     <div class="card text-right" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">{{ managerFirstName }}</h5>
-            <p class="card-text">{{ managerLastName }}</p>
+            <h5 class="card-title">{{ manager.managerFirstName }}</h5>
+            <p class="card-text">{{ manager.managerLastName }}</p>
             <a routerLink="/manager-detail"><button class="btn btn-primary">Détails</button></a>
             <a routerLink="/manager-list"><button class="btn btn-danger"(click)="delete()">Supprimer</button></a>
         </div>

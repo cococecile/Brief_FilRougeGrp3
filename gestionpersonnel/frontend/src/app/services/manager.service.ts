@@ -10,8 +10,13 @@ const baseUrl = "http://localhost:8080/api/managers";
 })
 export class ManagerService {
  
+ 
 
   constructor(private http: HttpClient) { }
+
+  list(): Observable<any> {
+    return this.http.get(baseUrl);
+  }
 
 
 
@@ -23,6 +28,10 @@ export class ManagerService {
   getAll(): Observable<any> {
     return this.http.get(baseUrl);
   }
+  findAll(): Observable<any> {
+    return this.http.get(baseUrl);
+  }
+ 
  
   /**
    * Find a Manager by id
