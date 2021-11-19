@@ -27,29 +27,26 @@ export class MissionDetailComponent implements OnInit {
   missionAssignedTo: Employee;
   missionIssuedBy: Department;
 
-  department:[];
   departmentId: any;
   departmentName: string;
 
-  employee: [];
   employeeFirstName: string;
   employeeLastName: string;
-  currentMission: any;
-  currentDepartment: any;
 
-  manager=[];
-  managerFirstName: string;
-  managerLastName: string;
 
   constructor(private missionService: MissionService, 
     private route: ActivatedRoute,
     private router: Router) {
     }
+
   ngOnInit(): void {
+
     this.retrieveMissions();
+
+
       }
     
-      retrieveMissions(): void {
+    retrieveMissions(): void {
        this.missionService.getAll()
        .subscribe(
          data => {
@@ -63,12 +60,12 @@ export class MissionDetailComponent implements OnInit {
     
       refreshList(): void {
         this.refreshList();
-        this.currentMission = null;
+        // this.currentMission = null;
         this.currentIndex = -1;
       }
     
       setActiveMission(department,index): void {
-        this.currentDepartment = department;
+        // this.currentDepartment = department;
         this.currentIndex = index;
       }
     

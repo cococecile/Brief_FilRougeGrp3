@@ -10,7 +10,8 @@ import { MissionService } from 'src/app/services/mission.service';
 })
 export class MissionListComponent implements OnInit {
 
-  mission: [];
+  missions: [];
+  missionId: any;
   selected?: Mission;
   missionName?: string;
   missionDescription?: string;
@@ -18,21 +19,18 @@ export class MissionListComponent implements OnInit {
   missionEndDate?: '';
   missionType?: '';
   missionAssignedTo?: '';
-  currentMission: any;
-  currentIndex: number;
-
 
   constructor(private missionService: MissionService) { }
 
   ngOnInit(): void {
-    this.retrieveEmployees();
+    this.retrieveMissions();
   }
 
-  retrieveEmployees(): void {
+  retrieveMissions(): void {
    this.missionService.getAll()
    .subscribe(
      data => {
-       this.mission = data;
+       this.missions = data;
        console.log(data);
      },
      error => {
@@ -40,16 +38,16 @@ export class MissionListComponent implements OnInit {
      });
   }
 
-  refreshList(): void {
-    this.refreshList();
-    this.currentMission = null;
-    this.currentIndex = -1;
-  }
+  // refreshList(): void {
+  //   this.refreshList();
+  //   this.currentMission = null;
+  //   this.currentIndex = -1;
+  // }
 
-  setActiveEmployee(mission,index): void {
-    this.currentMission = mission;
-    this.currentIndex = index;
-  }
+  // setActiveEmployee(mission,index): void {
+  //   this.currentMission = mission;
+  //   this.currentIndex = index;
+  // }
 
   delete(): void {
     if (!this.selected) {
