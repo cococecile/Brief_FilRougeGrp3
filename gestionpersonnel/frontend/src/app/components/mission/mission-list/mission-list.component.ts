@@ -13,12 +13,7 @@ export class MissionListComponent implements OnInit {
   missions: [];
   missionId: any;
   selected?: Mission;
-  missionName?: string;
-  missionDescription?: string;
-  missionStartDate?: '';
-  missionEndDate?: '';
-  missionType?: '';
-  missionAssignedTo?: '';
+  
 
   constructor(private missionService: MissionService) { }
 

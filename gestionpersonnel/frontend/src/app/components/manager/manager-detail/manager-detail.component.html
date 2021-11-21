@@ -1,8 +1,8 @@
-<div  *ngFor="let manager of managers" class="card text-center">
-    <div class="card-header">
+<div  class="card text-center">
+    <div  class="card-header">
       Details Manager
     </div>
-    <div class="card-body" >
+    <div *ngFor="let manager of managers " class="card-body" >
       <h5 class="card-title">{{ manager.managerFirstName }}  {{ manager.managerLastName }} <br> {{ manager.managerEmail }}</h5>
       <p class="card-text">{{ manager.managerDepartment.departmentName }}</p>
       <div class="dropdown">
@@ -10,7 +10,7 @@
          Employee list
         </button>
         <div  class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a [Employee]="employee" *ngFor="let employee of managers" class="dropdown-item" >{{manager.employee.employeeFirstName}} ggfjgj  {{ employeeLastName}}</a>
+          <a [Employee]="employee" *ngFor="let employee of managers" class="dropdown-item" >{{employee.employeeFirstName}} Simon Cécile  {{ employeeLastName}}</a>
         </div>
       </div>
       <a href="manager-list" class="btn btn-dark">Go Back List</a>

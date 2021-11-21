@@ -17,6 +17,7 @@ export class ManagerDetailComponent implements OnInit {
   currentIndex: number = -1;
 
   managers?:[];
+  managerId:any;
   managerFirstName: string;
   managerLastName: string;
   managerEmail: string;
@@ -27,7 +28,7 @@ export class ManagerDetailComponent implements OnInit {
   departmentName: string;
 
   
-  
+  employee?:[];
   employeeFirstName: string;
   employeeLastName: string;
 
@@ -37,19 +38,19 @@ export class ManagerDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.retrieveManagers();
+   this.retrieveManagers();
       }
     
       retrieveManagers(): void {
-       this.managerService.getAll()
-       .subscribe(
+      this.managerService.getAll()
+        .subscribe(
          data => {
            this.managers = data;
            console.log(data);
          },
          error => {
-           console.log(error);
-         });
+            console.log(error);
+          });
       }
     
       refreshList(): void {
