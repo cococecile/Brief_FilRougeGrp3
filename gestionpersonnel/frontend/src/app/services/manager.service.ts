@@ -62,7 +62,7 @@ export class ManagerService {
    * @param id 
    * @returns http delete request
    */
-   delete(id: string): Observable<any> {
+   delete(id: number): Observable<any> {
     return this.http.delete(`${baseUrl}/${id}`);
   }
 }

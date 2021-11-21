@@ -1,12 +1,13 @@
 <section class="manager-list">
     <h1>Liste des managers</h1>
         
-    <div class="card text-right" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{ managerFirstName }}</h5>
-            <p class="card-text">{{ managerLastName }}</p>
-            <a routerLink="/manager-detail"><button class="btn btn-primary">Détails</button></a>
-            <a routerLink="/manager-list"><button class="btn btn-danger">Supprimer</button></a>
+    <div  class="card text-right" style="width: 18rem;"
+    *ngFor="let manager of managers">
+        <div  class="card-body">
+            <h5 class="card-title">{{ manager.managerFirstName }}</h5>
+            <p class="card-text">{{ manager.managerLastName }}</p>
+            <a routerLink="/manager-detail/"><button class="btn btn-primary">Détails</button></a>
+            <a><button class="btn btn-danger" (click)="delete(manager.managerId)">Supprimer</button></a>
         </div>
     </div>
 

@@ -11,14 +11,14 @@ import { ManagerService } from 'src/app/services/manager.service';
 })
 export class ManagerListComponent implements OnInit {
 
-  managers?:Manager[];
-  selected?: Manager;
-  currentManager =null;
-  currentIndex: number = -1;
-
-  managerId:any;
-  managerFirstName = '';
-  managerLastName ='';
+  
+  
+  
+  managers:[];
+  
+  
+  
+  
 
   
   
@@ -44,17 +44,22 @@ export class ManagerListComponent implements OnInit {
         console.log(erreur);
       });
     }
+
+    delete(manager:Manager): void {
+      this.managerService.delete(manager.managerId).subscribe((res: HttpResponse<any>) => {
+        console.log(res.status);
+        if (res.status === 200) {
+           this.retrieveManagers();
+          }
+        });
+    }
  
-   refreshList(): void {
-     this.refreshList();
-     this.currentManager = null;
-     this.currentIndex = -1;
-   }
+  }
  
-   setActivemanager(manager,index): void {
-     this.currentManager = manager;
-     this.currentIndex = index;
-   }
+  //  setActivemanager(manager,index): void {
+  //    this.currentManager = manager;
+  //    this.currentIndex = index;
+  //  }
  
   //  delete(managerId:any): void {
   //    if (!this.selected) {
@@ -67,13 +72,7 @@ export class ManagerListComponent implements OnInit {
   //       this.managersOriginal = this.managers;
   //     });
   //   }
-    // delete(managerId: any): void {
-    //   this.managerService.delete(managerId).subscribe((res: HttpResponse<any>) => {
-    //     console.log(res.status);
-    //     if (res.status === 200) {
-    //       this.getManagers();
-    //     }
-    //   });
+ 
   
   //}
-}
+
