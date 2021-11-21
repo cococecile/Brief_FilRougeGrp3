@@ -23,7 +23,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { data } from 'jquery';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +41,7 @@ import { data } from 'jquery';
     ManagerFormComponent,
     NavComponent,
     FooterComponent,
+
   ],
   imports: [
     BrowserModule,
