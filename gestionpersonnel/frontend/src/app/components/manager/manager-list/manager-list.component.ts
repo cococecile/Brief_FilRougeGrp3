@@ -1,3 +1,4 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Manager } from 'src/app/model/manager.model';
@@ -10,48 +11,68 @@ import { ManagerService } from 'src/app/services/manager.service';
 })
 export class ManagerListComponent implements OnInit {
 
-  managers?:Manager[];
-  selected?: Manager;
-  currentManager =null;
-  currentIndex: number = -1;
-  managerFirstName = '';
-  managerLastName ='';
+  
+  
+  
+  managers:[];
+  
+  
+  
+  
 
   
-  constructor(private managerService: ManagerService, private route: ActivatedRoute) { 
+  
+
+  
+  constructor(private managerService: ManagerService) { 
+
   }
+ 
 
   ngOnInit(): void {  
     this.retrieveManagers()
       }
     
-  retrieveManagers(): void {
-    this.managerService.getAll()
-    .subscribe(
-      data => {
+   retrieveManagers(): void {
+   this.managerService.getAll()
+     .subscribe(
+     data => {
         this.managers = data;
-        console.log(data);
+       console.log(data);
       },
       erreur => {
         console.log(erreur);
       });
-   }
+    }
+
+    delete(manager:Manager): void {
+      this.managerService.delete(manager.managerId).subscribe((res: HttpResponse<any>) => {
+        console.log(res.status);
+        if (res.status === 200) {
+           this.retrieveManagers();
+          }
+        });
+    }
  
-   refreshList(): void {
-     this.refreshList();
-     this.currentManager = null;
-     this.currentIndex = -1;
-   }
+  }
  
-   setActivemanager(manager,index): void {
-     this.currentManager = manager;
-     this.currentIndex = index;
-   }
+  //  setActivemanager(manager,index): void {
+  //    this.currentManager = manager;
+  //    this.currentIndex = index;
+  //  }
  
-   delete(): void {
-     if (!this.selected) {
-       return;
-     }
- }
+  //  delete(managerId:any): void {
+  //    if (!this.selected) {
+  //      return;
+  //    }
+     
+  //  getManagers():  void {
+  //     this.managerService.findAll().subscribe((res: HttpResponse<Manager[]>) => {
+  //       this.managers = res.body;
+  //       this.managersOriginal = this.managers;
+  //     });
+  //   }
  
- }
+  
+  //}
+

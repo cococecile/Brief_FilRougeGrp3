@@ -1,10 +1,10 @@
 <section class="employee-list">
     <h1>Liste des employés</h1>
         
-    <div class="card text-right" style="width: 18rem;">
+    <div *ngFor="let employee of employees" class="card text-right" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title"> Nom : {{ employeeFirstName }}</h5>
-            <p class="card-text">Prénom : {{ employeeLastName }}</p>
+            <h5 class="card-title"> {{ employee.employeeFirstName }}</h5>
+            <p class="card-text">{{ employee.employeeLastName }}</p>
             <a routerLink="/employee-detail"><button class="btn btn-primary">Détails</button></a>
             <a routerLink="/employee-list"><button class="btn btn-danger" (click)="delete()">Supprimer</button></a>
         </div>

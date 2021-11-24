@@ -3,10 +3,10 @@ import { Employee } from "./employee.model";
 import { Mission } from "./mission.model";
 
 export class Manager {
-    managerId?: any;
+    managerId?: number;
     managerFirstName?: string;
     managerLastName?: string;
     managerEmail?: string;
     managerDepartment?: Department;
-    managerEmployees?: [Employee];
+    managerEmployees?: Employee[];
   }

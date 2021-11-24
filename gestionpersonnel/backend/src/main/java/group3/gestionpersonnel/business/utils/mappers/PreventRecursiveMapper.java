@@ -59,7 +59,8 @@ public class PreventRecursiveMapper {
         ModelMapper mapper = new ModelMapper();
         remover.skipDepartmentNestedFields(mapper);
         remover.skipEmployeeNestedFields(mapper);
-        remover.skipMissionNestedFields(mapper);
+        remover.skipMissionNestedFields(mapper);        
+        mapper.getConfiguration().setAmbiguityIgnored(true);
         return mapper;
     }
 
@@ -74,7 +75,8 @@ public class PreventRecursiveMapper {
         ModelMapper mapper = new ModelMapper();
         remover.skipDepartmentNestedFields(mapper);
         remover.skipEmployeeNestedFields(mapper);
-        remover.skipManagerNestedFields(mapper);
+        remover.skipManagerNestedFields(mapper);        
+        mapper.getConfiguration().setAmbiguityIgnored(true);
         return mapper;
     }
 
