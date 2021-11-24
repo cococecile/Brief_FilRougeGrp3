@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Mission } from 'src/app/model/mission.model';
 import { MissionService } from 'src/app/services/mission.service';
 
@@ -11,6 +11,7 @@ import { MissionService } from 'src/app/services/mission.service';
 export class MissionListComponent implements OnInit {
 
   missions: [];
+
   missionId: any;
   selected?: Mission;
   missionName?: string;
@@ -20,22 +21,23 @@ export class MissionListComponent implements OnInit {
   missionType?: '';
   missionAssignedTo?: '';
 
-  constructor(private missionService: MissionService) { }
+  constructor(private missionService: MissionService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.retrieveMissions();
   }
 
   retrieveMissions(): void {
-   this.missionService.getAll()
-   .subscribe(
-     data => {
-       this.missions = data;
-       console.log(data);
-     },
-     error => {
-       console.log(error);
-     });
+    this.missionService.getAll()
+      .subscribe(
+        data => {
+          this.missions = data;
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
   // refreshList(): void {
@@ -53,6 +55,10 @@ export class MissionListComponent implements OnInit {
     if (!this.selected) {
       return;
     }
+  }
+  // fonction récupération object mission pour afficher détails //
+  recupObject(mission: Mission) {
+    this.router.navigate(['/mission-detail', mission]);
   }
 
 }

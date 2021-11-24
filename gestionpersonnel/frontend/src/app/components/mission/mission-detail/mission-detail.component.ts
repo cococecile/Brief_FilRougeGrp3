@@ -64,14 +64,16 @@ export class MissionDetailComponent implements OnInit {
         this.currentIndex = -1;
       }
     
-      setActiveMission(department,index): void {
-        // this.currentDepartment = department;
+      setActiveMission(mission,index): void {
+        // this.currentMission = mission
         this.currentIndex = index;
       }
     
-      delete(): void {
+      delete(id:number): void {
         if (!this.selected) {
           return;
+          // recup id du service
+          // refreshList
         }
   }
 

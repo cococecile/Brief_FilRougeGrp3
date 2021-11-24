@@ -7,10 +7,10 @@
     <div class="card text-right" style="width: 18rem;"
      *ngFor="let mission of missions">
         <div class="card-body">
-            <h5 class="card-title">{{ mission.missionName }} </h5>
+            <h5 class="card-title">Nom de la mission : {{ mission.missionName }} </h5>
             <p class="card-text">Nom de la mission</p>
-            <a routerLink="/missionList" onclick="recupId"><button class="btn btn-primary">Détails</button></a>
-            <a routerLink="/"><button class="btn btn-danger" (click)="delete()">Supprimer</button></a>
+            <button class="btn btn-primary" (click)="recupObject(mission)">Détails</button>
+            <button class="btn btn-danger" (click)="delete()">Supprimer</button>
         </div>
     </div>
 </section>
