@@ -34,18 +34,6 @@ export class MissionListComponent implements OnInit {
           console.log(error);
         });
   }
-
-  // refreshList(): void {
-  //   this.refreshList();
-  //   this.currentMission = null;
-  //   this.currentIndex = -1;
-  // }
-
-  // setActiveEmployee(mission,index): void {
-  //   this.currentMission = mission;
-  //   this.currentIndex = index;
-  // }
-
   delete(): void {
     if (!this.selected) {
       return;
